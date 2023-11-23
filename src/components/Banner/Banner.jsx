@@ -20,7 +20,7 @@ const Banner = () => {
                         <img src="https://img.freepik.com/premium-photo/happy-team-diverse-doctors-hospital-lobby_709984-2700.jpg?w=740" className="w-full" />
                     </div>
                 </div>
-                <div className="flex absolute bottom-0 justify-center w-full py-2 gap-2">
+                <div className="flex absolute bottom-5 justify-center w-full py-2 gap-2">
                     <a href="#item1" className="btn btn-xs bg-black z-10 text-white hover:text-black">1</a>
                     <a href="#item2" className="btn btn-xs bg-black z-10 text-white hover:text-black">2</a>
                     <a href="#item3" className="btn btn-xs bg-black z-10 text-white hover:text-black">3</a>
