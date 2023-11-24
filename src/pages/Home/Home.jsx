@@ -1,6 +1,6 @@
 import React from 'react';
 import Banner from '../../components/Banner/Banner';
-import PopularCamps from '../../components/PopularCamps/PopularCamps';
+import CampCards from '../../components/CampCards/CampCards';
 import Testimonials from '../../components/Testimonials/Testimonials';
 
 
@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <div>
             <Banner />
-            <PopularCamps />
+            <CampCards />
             <Testimonials />
         </div>
     );

@@ -15,7 +15,7 @@
 
 import React from 'react';
 
-const PopularCamp = () => {
+const CampCard= () => {
   const medicalCampsData = [
     {
       name: 'Camp A',
@@ -62,4 +62,4 @@ const PopularCamp = () => {
   );
 };
 
-export default PopularCamp;
+export default CampCard;

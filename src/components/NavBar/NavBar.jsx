@@ -125,7 +125,7 @@ const user = true
 
 
     return (
-        <div className={`bg-blue-50 w-full`}>
+        <div className={`bg-blue-200 w-full`}>
             <div className="navbar container mx-auto h-24">
                 <div className="navbar-start">
                     <div className="dropdown">
