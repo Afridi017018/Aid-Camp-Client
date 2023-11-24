@@ -6,6 +6,8 @@ import AvailableCamps from "./pages/AvailableCamps/AvailableCamps";
 import CampDetails from "./pages/CampDetails/CampDetails";
 import ContactUs from "./pages/ContactUs/ContactUs";
 import Home from "./pages/Home/Home";
+import ParticipantProfile from "./pages/ParticipantProfile/ParticipantProfile";
+import RegisteredCamps from "./pages/RegisteredCamps/RegisteredCamps";
 
 
 export const router = createBrowserRouter([
@@ -43,7 +45,14 @@ export const router = createBrowserRouter([
                 path: "home",
                 element: <Home />,
             },
-            
+            {
+                path: "participant-profile",
+                element: <ParticipantProfile />,
+            },
+            {
+                path: "registered-camps",
+                element: <RegisteredCamps />,
+            },
            
         ]
     },
