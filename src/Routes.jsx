@@ -7,6 +7,7 @@ import CampDetails from "./pages/CampDetails/CampDetails";
 import ContactUs from "./pages/ContactUs/ContactUs";
 import FeedBack from "./pages/FeedBack/FeedBack";
 import Home from "./pages/Home/Home";
+import OrganizerProfile from "./pages/OrganizerProfile/OrganizerProfile";
 import ParticipantProfile from "./pages/ParticipantProfile/ParticipantProfile";
 import PaymentHistory from "./pages/PaymentHistory/PaymentHistory";
 import RegisteredCamps from "./pages/RegisteredCamps/RegisteredCamps";
@@ -62,6 +63,10 @@ export const router = createBrowserRouter([
             {
                 path: "feedback",
                 element: <FeedBack />,
+            },
+            {
+                path: "organizer-profile",
+                element: <OrganizerProfile />,
             },
         ]
     },

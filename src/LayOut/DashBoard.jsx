@@ -8,7 +8,7 @@ const DashBoard = () => {
 
             <div className='md:w-full lg:w-64 bg-gray-600 min-h-screen text-white font-bold'>
                 <ul className=' menu p-4 gap-5'>
-                    <li>
+                    {/* <li>
                         <NavLink to='/dashboard/participant-profile'>Profile</NavLink>
                     </li>
                     <li>
@@ -19,7 +19,21 @@ const DashBoard = () => {
                     </li>
                     <li>
                         <NavLink to='/dashboard/feedback'>Feedback</NavLink>
+                    </li> */}
+
+                    <li>
+                        <NavLink to='/dashboard/organizer-profile'>Profile</NavLink>
                     </li>
+                    <li>
+                        <NavLink to='/dashboard/add-camp'>Add Camp</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/dashboard/manage-camps'>Manage Camps</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/dashboard/manage-registered-camps'>Registered Camps</NavLink>
+                    </li>
+
                 </ul>
             </div>
 
