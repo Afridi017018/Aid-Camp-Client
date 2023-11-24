@@ -5,8 +5,10 @@ import AvailableCamps from "./pages/AvailableCamps/AvailableCamps";
 
 import CampDetails from "./pages/CampDetails/CampDetails";
 import ContactUs from "./pages/ContactUs/ContactUs";
+import FeedBack from "./pages/FeedBack/FeedBack";
 import Home from "./pages/Home/Home";
 import ParticipantProfile from "./pages/ParticipantProfile/ParticipantProfile";
+import PaymentHistory from "./pages/PaymentHistory/PaymentHistory";
 import RegisteredCamps from "./pages/RegisteredCamps/RegisteredCamps";
 
 
@@ -53,7 +55,14 @@ export const router = createBrowserRouter([
                 path: "registered-camps",
                 element: <RegisteredCamps />,
             },
-           
+            {
+                path: "payment-history",
+                element: <PaymentHistory />,
+            },
+            {
+                path: "feedback",
+                element: <FeedBack />,
+            },
         ]
     },
 ]);
