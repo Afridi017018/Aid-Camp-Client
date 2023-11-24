@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "./App";
+import App from "./LayOut/App";
+import DashBoard from "./LayOut/DashBoard";
 import AvailableCamps from "./pages/AvailableCamps/AvailableCamps";
 
 import CampDetails from "./pages/CampDetails/CampDetails";
@@ -29,6 +30,20 @@ export const router = createBrowserRouter([
                 path: "/contact-us",
                 element: <ContactUs />,
             },
+           
+        ]
+    },
+
+    {
+        path: "dashboard",
+        element: <DashBoard />,
+        // errorElement: <ErrorPage />,
+        children: [
+            {
+                path: "home",
+                element: <Home />,
+            },
+            
            
         ]
     },
