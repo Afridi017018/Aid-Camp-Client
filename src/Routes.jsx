@@ -3,6 +3,7 @@ import App from "./App";
 import AvailableCamps from "./pages/AvailableCamps/AvailableCamps";
 
 import CampDetails from "./pages/CampDetails/CampDetails";
+import ContactUs from "./pages/ContactUs/ContactUs";
 import Home from "./pages/Home/Home";
 
 
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
             {
                 path: "/available-camps",
                 element: <AvailableCamps />,
+            },
+            {
+                path: "/contact-us",
+                element: <ContactUs />,
             },
            
         ]

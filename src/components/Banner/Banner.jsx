@@ -4,7 +4,7 @@ const Banner = () => {
     return (
         <div>
             <div className='relative'>
-                <div className="carousel w-full h-[500px]">
+                <div className="carousel w-full h-[600px]">
 
 
                     <div id="item1" className="carousel-item w-full">
@@ -26,7 +26,7 @@ const Banner = () => {
                     <a href="#item3" className="btn btn-xs bg-black z-10 text-white hover:text-black">3</a>
                 </div>
 
-                <div className='absolute w-full h-[500px] bg-black opacity-60 top-0'></div>
+                <div className='absolute w-full h-[600px] bg-black opacity-60 top-0'></div>
                 <div>
                 <div className=' absolute bottom-40 w-full text-white text-center text-sm lg:text-xl font-bold'>
                     <h3 className='my-2'>Revolutionize Community Health with Our Aid Camp!</h3>
