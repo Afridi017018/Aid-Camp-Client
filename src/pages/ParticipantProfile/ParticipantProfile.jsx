@@ -23,10 +23,9 @@ const ParticipantProfile = () => {
   };
 
   const handleSaveClick = () => {
-    // Implement save/update logic here (e.g., API call to update the participant's profile)
-    // For simplicity, let's just toggle the editing state in this example
+
     setIsEditing(false);
-    // Display a success alert or handle errors accordingly
+
   };
 
   return (

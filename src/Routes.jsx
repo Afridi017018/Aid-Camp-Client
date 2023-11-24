@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./LayOut/App";
 import DashBoard from "./LayOut/DashBoard";
+import AddCamp from "./pages/AddCamp/AddCamp";
 import AvailableCamps from "./pages/AvailableCamps/AvailableCamps";
 
 import CampDetails from "./pages/CampDetails/CampDetails";
@@ -68,6 +69,11 @@ export const router = createBrowserRouter([
                 path: "organizer-profile",
                 element: <OrganizerProfile />,
             },
+            {
+                path: "add-camp",
+                element: <AddCamp />,
+            },
+
         ]
     },
 ]);
