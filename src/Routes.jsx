@@ -9,12 +9,14 @@ import CampDetails from "./pages/CampDetails/CampDetails";
 import ContactUs from "./pages/ContactUs/ContactUs";
 import FeedBack from "./pages/FeedBack/FeedBack";
 import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
 import ManageCamps from "./pages/ManageCamps/ManageCamps";
 import ManageRegisteredCamps from "./pages/ManageRegisteredCamps/ManageRegisteredCamps";
 import ManageUpcoming from "./pages/ManageUpcoming/ManageUpcoming";
 import OrganizerProfile from "./pages/OrganizerProfile/OrganizerProfile";
 import ParticipantProfile from "./pages/ParticipantProfile/ParticipantProfile";
 import PaymentHistory from "./pages/PaymentHistory/PaymentHistory";
+import Register from "./pages/Register/Register";
 import RegisteredCamps from "./pages/RegisteredCamps/RegisteredCamps";
 
 
@@ -41,8 +43,18 @@ export const router = createBrowserRouter([
                 path: "/contact-us",
                 element: <ContactUs />,
             },
-           
+            
+
         ]
+
+    },
+    {
+        path: "/login",
+        element: <Login />,
+    },
+    {
+        path: "/register",
+        element: <Register />,
     },
 
     {

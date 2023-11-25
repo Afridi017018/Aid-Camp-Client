@@ -1,15 +1,15 @@
 import React from 'react';
-
-
+import { useContext } from 'react';
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-
+// import useAxios from '../../hooks/useAxios';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Login = () => {
     const location = useLocation();
     const navigate = useNavigate();
-
+    // const axios = useAxios();
 
     const { signIn, signInGoogle, user, setLoading } = useContext(AuthContext);
 
@@ -27,7 +27,7 @@ const Login = () => {
             toast.success("Login Successful !");
 
             if (login.user) {
-                axios.post(`/user-info`, { user: login.user.email, name: login.user.displayName, photo: login.user.photoURL })
+                // axios.post(`/user-info`, { user: login.user.email, name: login.user.displayName, photo: login.user.photoURL })
                 navigate(location?.state ? location.state : "/")
             }
 
