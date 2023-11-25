@@ -11,6 +11,7 @@ import FeedBack from "./pages/FeedBack/FeedBack";
 import Home from "./pages/Home/Home";
 import ManageCamps from "./pages/ManageCamps/ManageCamps";
 import ManageRegisteredCamps from "./pages/ManageRegisteredCamps/ManageRegisteredCamps";
+import ManageUpcoming from "./pages/ManageUpcoming/ManageUpcoming";
 import OrganizerProfile from "./pages/OrganizerProfile/OrganizerProfile";
 import ParticipantProfile from "./pages/ParticipantProfile/ParticipantProfile";
 import PaymentHistory from "./pages/PaymentHistory/PaymentHistory";
@@ -88,6 +89,10 @@ export const router = createBrowserRouter([
             {
                 path: "add-upcoming-camp",
                 element: <AddUpcomingCamp />,
+            },
+            {
+                path: "manage-upcoming-camps",
+                element: <ManageUpcoming />,
             },
 
         ]

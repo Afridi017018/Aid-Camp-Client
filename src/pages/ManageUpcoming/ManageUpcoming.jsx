@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ManageCamps = () => {
+const ManageUpcoming = () => {
     return (
         <div className='px-2 lg:px-20 my-10'>
 
@@ -12,8 +12,8 @@ const ManageCamps = () => {
 
                             <th>Name</th>
                             <th>Date & Time</th>
-                            <th>Serviced Provided</th>
-                            <th>Healthcare Professionals</th>
+                            <th>Total Participants</th>
+                            <th>Total Interested Professionals</th>
                             <th>Target Audience</th>
                             <th>Action</th>
                         </tr>
@@ -33,8 +33,8 @@ const ManageCamps = () => {
                             <td>
                                 22/03/23, 4.00pm
                             </td>
-                            <td>Dental</td>
-                            <td>Dr razes, Dr Karim, Dr Shahid</td>
+                            <td>15</td>
+                            <td>5</td>
                             <td className=''>Children</td>
 
                             <td>
@@ -54,4 +54,4 @@ const ManageCamps = () => {
     );
 };
 
-export default ManageCamps;
+export default ManageUpcoming;
