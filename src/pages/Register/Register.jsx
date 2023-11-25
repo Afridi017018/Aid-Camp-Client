@@ -1,13 +1,13 @@
 import React from 'react';
 import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import { useState } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import useAxios from '../../hooks/useAxios';
+import { toast } from 'react-toastify';
 
 
-const image_hosting_key = "b6e7a9e1402a90bb069c367737e25362";
+const image_hosting_key =import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 
@@ -17,6 +17,7 @@ const Register = () => {
 
     const { createUser, updateUser, setLoading } = useContext(AuthContext)
     const [passwordMessage, setPasswordMessage] = useState("");
+    const [role, setRole] = useState("participant");
     const navigate = useNavigate();
 
     const handleRegister = async (e) => {
@@ -25,7 +26,7 @@ const Register = () => {
         const passwordPattern = /^(?=.*[A-Z])(?=.*[\W_]).{6,}$/;
         const newForm = new FormData(e.currentTarget);
         const name = newForm.get('name');
-        const photo = newForm.get('image');
+        const image = newForm.get('image');
         const email = newForm.get('email');
         const password = newForm.get('password');
 
@@ -39,26 +40,24 @@ const Register = () => {
             setPasswordMessage("");
             try {
 
-                const imageFile = { image: photo }
+                const now = await createUser(email, password)
+
+                const imageFile = { image: image }
                 const res = await axios.post(image_hosting_api, imageFile, {
                     headers: {
                         'content-type': 'multipart/form-data'
                     }
                 });
 
+                const photo = res.data.data.display_url;
+                await updateUser(name, photo);
 
-                if (res.data.success) {
-                    const photo = res.data.data.display_url;
-                    const now = await createUser(email, password, name, photo)
-                    await updateUser(name, photo);
-                    toast.dismiss();
-                    toast.success("Registered Successfully !");
-                    navigate("/login");
-                }
-
+                toast.success("Registered Successfully !");
+                navigate("/login");
 
 
             } catch (error) {
+                // console.log(error.message)
                 toast.error(error.message);
                 setLoading(false);
             }
@@ -96,6 +95,21 @@ const Register = () => {
                                     <span className="label-text">Email</span>
                                 </label>
                                 <input type="email" placeholder="email" name='email' className="input input-bordered" required />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Role</span>
+                                </label>
+                                <select
+                                    value={role}
+                                    onChange={(e) => setRole(e.target.value)}
+                                    className="select select-bordered w-full"
+                                    required
+                                >
+                                    <option value="participant">Participant</option>
+                                    <option value="organizer">Organizer</option>
+                                    <option value="professional">Professional</option>
+                                </select>
                             </div>
                             <div className="form-control">
                                 <label className="label">

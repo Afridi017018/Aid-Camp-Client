@@ -163,7 +163,7 @@ const {user, logOut} = useAuth();
                         }
                         {
                             user === null ||
-                            <div className='pr-5 lg:pr-0 flex gap-2 flex-row lg:gap-5 font-medium text-xs lg:text-lg'>
+                            <div className='pr-5 lg:pr-0 flex gap-2 flex-row lg:gap-4 font-medium text-xs lg:text-lg'>
                                 <li className='flex items-center'>
                                     <div>
                                         <img className='h-6 w-6 lg:h-9 lg:w-9 rounded-full' src={user.photoURL} alt="" />
