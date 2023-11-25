@@ -7,7 +7,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 const NavBar = () => {
 
 
-const user = true
+const user = null
     const navigate = useNavigate()
 
     const handleLogOut = async () => {
@@ -103,7 +103,7 @@ const user = true
             <NavLink
                 to="/login"
                 className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "text-blue-700 font-bold underline underline-offset-4" : ""
+                    isPending ? "pending" : isActive ? "bg-blue-800 text-white px-2 py-1 rounded font-bold" : "text-white"
                 }
             >
                 Login
@@ -113,7 +113,7 @@ const user = true
             <NavLink
                 to="/register"
                 className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "text-blue-700 font-bold underline underline-offset-4" : ""
+                    isPending ? "pending" : isActive ? "bg-blue-800 text-white px-2 py-1 rounded font-bold" : "text-white"
                 }
             >
                 Register
