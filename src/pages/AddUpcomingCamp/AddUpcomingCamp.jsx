@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const AddCamp = () => {
+const AddUpcomingCamp = () => {
     const [campData, setCampData] = useState({
         name: '',
         image: null,
@@ -32,7 +32,6 @@ const AddCamp = () => {
             time:'',
             location: '',
             servicesProvided: '',
-            professionalsInAttendance: '',
             targetAudience: '',
             description: '',
         });
@@ -42,7 +41,7 @@ const AddCamp = () => {
         <div className="container mx-auto my-5">
             <div className="lg:w-full mx-auto p-4 lg:px-20">
                 <div className="bg-white py-5 rounded border shadow-2xl px-10">
-                    <h1 className="text-3xl font-semibold mb-5">Add Camp</h1>
+                    <h1 className="text-3xl font-semibold mb-5">Add Upcoming Camp</h1>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4">
                             <input
@@ -119,18 +118,7 @@ const AddCamp = () => {
                                 required
                             />
                         </div>
-                        <div className="mb-4">
-                            <input
-                                type="text"
-                                id="professionalsInAttendance"
-                                name="professionalsInAttendance"
-                                value={campData.professionalsInAttendance}
-                                onChange={handleInputChange}
-                                className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
-                                placeholder='Healthcare Professionals in Attendance'
-                                required
-                            />
-                        </div>
+
                         <div className="mb-4">
                             <input
                                 type="text"
@@ -167,4 +155,4 @@ const AddCamp = () => {
     );
 };
 
-export default AddCamp;
+export default AddUpcomingCamp;

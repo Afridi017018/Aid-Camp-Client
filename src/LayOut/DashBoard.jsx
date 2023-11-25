@@ -33,6 +33,21 @@ const DashBoard = () => {
                     <li>
                         <NavLink to='/dashboard/manage-registered-camps'>Registered Camps</NavLink>
                     </li>
+                    <li>
+                        <NavLink to='/dashboard/add-upcoming-camp'>Add Upcoming</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/dashboard/manage-upcoming-camps'>Manage Upcoming</NavLink>
+                    </li>
+
+                    {/* <li>
+                        <NavLink to='/dashboard/professional-profile'>Profile</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/dashboard/accepted-camps'>Accepted Camps</NavLink>
+                    </li> */}
+                    
+
 
                 </ul>
             </div>

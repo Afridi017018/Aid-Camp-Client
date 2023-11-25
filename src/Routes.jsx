@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "./LayOut/App";
 import DashBoard from "./LayOut/DashBoard";
 import AddCamp from "./pages/AddCamp/AddCamp";
+import AddUpcomingCamp from "./pages/AddUpcomingCamp/AddUpcomingCamp";
 import AvailableCamps from "./pages/AvailableCamps/AvailableCamps";
 
 import CampDetails from "./pages/CampDetails/CampDetails";
@@ -83,6 +84,10 @@ export const router = createBrowserRouter([
             {
                 path: "manage-registered-camps",
                 element: <ManageRegisteredCamps />,
+            },
+            {
+                path: "add-upcoming-camp",
+                element: <AddUpcomingCamp />,
             },
 
         ]
