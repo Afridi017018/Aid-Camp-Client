@@ -4,8 +4,17 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
+import useAxios from '../../hooks/useAxios';
+
+
+const image_hosting_key = "b6e7a9e1402a90bb069c367737e25362";
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+
 
 const Register = () => {
+
+    const axios = useAxios();
+
     const { createUser, updateUser, setLoading } = useContext(AuthContext)
     const [passwordMessage, setPasswordMessage] = useState("");
     const navigate = useNavigate();
@@ -16,19 +25,38 @@ const Register = () => {
         const passwordPattern = /^(?=.*[A-Z])(?=.*[\W_]).{6,}$/;
         const newForm = new FormData(e.currentTarget);
         const name = newForm.get('name');
-        const photo = newForm.get('photo');
+        const photo = newForm.get('image');
         const email = newForm.get('email');
         const password = newForm.get('password');
+
+
+
+
+        //    console.log(res.data.data.display_url)
+        // console.log(e.target.image.files[0])
 
         if (passwordPattern.test(password)) {
             setPasswordMessage("");
             try {
 
-                const now = await createUser(email, password, name, photo)
-                await updateUser(name, photo);
-                toast.dismiss();
-                toast.success("Registered Successfully !");
-                navigate("/login");
+                const imageFile = { image: photo }
+                const res = await axios.post(image_hosting_api, imageFile, {
+                    headers: {
+                        'content-type': 'multipart/form-data'
+                    }
+                });
+
+
+                if (res.data.success) {
+                    const photo = res.data.data.display_url;
+                    const now = await createUser(email, password, name, photo)
+                    await updateUser(name, photo);
+                    toast.dismiss();
+                    toast.success("Registered Successfully !");
+                    navigate("/login");
+                }
+
+
 
             } catch (error) {
                 toast.error(error.message);
@@ -61,7 +89,7 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Photo</span>
                                 </label>
-                                <input type="text" placeholder="photo url" name='photo' className="input input-bordered" required />
+                                <input type="file" name='image' className="border border-gray-300 py-2 rounded-md px-2" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">

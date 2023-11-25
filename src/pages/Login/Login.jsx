@@ -49,7 +49,7 @@ const Login = () => {
             toast.success("Login Successful !");
 
             if (login.user) {
-                axios.post(`/user-info`, { user: login.user.email, name: login.user.displayName, photo: login.user.photoURL })
+                // axios.post(`/user-info`, { user: login.user.email, name: login.user.displayName, photo: login.user.photoURL })
                 navigate(location?.state ? location.state : "/")
             }
 
