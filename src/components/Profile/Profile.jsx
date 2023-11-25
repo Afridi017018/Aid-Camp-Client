@@ -1,12 +1,47 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
+import useAuth from '../../hooks/useAuth';
+import useAxios from '../../hooks/useAxios';
+import Loading from '../../pages/Loading/Loading';
 
 const Profile = () => {
-  const [profileData, setProfileData] = useState({
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-    phone: '123-456-7890',
-    interests: "",
-  });
+
+    const {user, loading} = useAuth();
+
+    const axios = useAxios();
+
+    const [profileData, setProfileData] = useState({
+        name: 'John Doe',
+        email: 'john.doe@example.com',
+        phone: '123-456-7890',
+        interests: "",
+      });
+  
+
+      const getUserInfo = async () => {
+        const result = await axios.get(`/api/user/get-user-info?email=${user?.email}`);
+        // console.log(result.data.result)
+        const {title, image, category, shortDesc, longDesc} = result.data.result;
+          setBlogData({title, image, category, shortDesc, longDesc});
+        return result;
+      }
+
+      const { data, isLoading } = useQuery({
+        queryKey: ["profile", user],
+        queryFn: getUserInfo,
+        refetchOnWindowFocus:false,
+        refetchOnMount:true,
+        cacheTime: 10000,
+        staleTimeout: 10000,
+      })
+
+
+if(isLoading)
+{
+    return <Loading />
+}
+  
+console.log(data)
 
   const [isEditing, setIsEditing] = useState(false);
 
@@ -44,7 +79,7 @@ const Profile = () => {
                 value={profileData.name}
                 onChange={handleInputChange}
                 className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
-                readOnly={!isEditing}
+                placeholder='Your name'
               />
             </div>
             <div className="mb-4">
@@ -54,10 +89,9 @@ const Profile = () => {
               <input
                 type="email"
                 name="email"
-                value={profileData.email}
-                onChange={handleInputChange}
+                defaultValue={user?.email}
                 className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
-                readOnly={!isEditing}
+                readOnly
               />
             </div>
             <div className="mb-4">
@@ -67,10 +101,10 @@ const Profile = () => {
               <input
                 type="text"
                 name="phone"
-                value={profileData.phone}
+                defaultValue={profileData.phone}
                 onChange={handleInputChange}
                 className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
-                readOnly={!isEditing}
+                placeholder='Your phone number'
               />
             </div>
 
@@ -85,7 +119,7 @@ const Profile = () => {
                 value={profileData.interests}
                 onChange={handleInputChange}
                 className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
-                readOnly={!isEditing}
+                placeholder='Interests'
               />
             </div>
             <div className='text-center pt-5'>
