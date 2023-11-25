@@ -52,7 +52,10 @@ const Register = () => {
                 const photo = res.data.data.display_url;
                 await updateUser(name, photo);
 
+                await axios.post('/api/user/user-info', {name, email, role: role.toLowerCase()})
+               
                 toast.success("Registered Successfully !");
+
                 navigate("/login");
 
 
