@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { useNavigate } from 'react-router-dom/dist';
 import useAxios from '../../hooks/useAxios';
 import Loading from '../../pages/Loading/Loading';
 import CampCard from '../CampCard/CampCard';
@@ -7,6 +8,7 @@ import CampCard from '../CampCard/CampCard';
 const CampCards = () => {
 
     const axios = useAxios();
+    const navigate = useNavigate();
 
     const getPopularCamps = async () => {
         const res = await axios.get(`/api/camp/get-popular-camps`);
@@ -34,6 +36,7 @@ const CampCards = () => {
                 }
 
             </div>
+            <div onClick={()=> navigate(`/available-camps`)} className='font-bold text-lg text-center underline underline-offset-4 text-gray-600 cursor-pointer'>See All</div>
         </div>
     );
 };
