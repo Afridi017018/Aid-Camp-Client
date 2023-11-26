@@ -1,7 +1,6 @@
 // src/components/CampDetails.js
 import React, { useState } from 'react';
 
-
 import { Modal } from 'react-responsive-modal';
 
 const CampDetails = () => {
@@ -36,7 +35,7 @@ const CampDetails = () => {
 
 
     return (
-        <div className='my-10 px-10'>
+        <div className='pt-32 pb-10 px-10'>
             <div>
                 <img className='w-full h-[28rem] rounded' src="https://img.freepik.com/free-photo/medical-banner-with-doctor-patient_23-2149611238.jpg?w=740&t=st=1700763105~exp=1700763705~hmac=f3fde538305cfd4c14b60efbe9172f3fa8d9084aaa7c5cc8367a8db4730b990b" alt="" />
             </div>
