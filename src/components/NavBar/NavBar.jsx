@@ -172,7 +172,7 @@ const {user, logOut} = useAuth();
                                 <li className='flex items-center text-white'>
                                     {user.displayName}
                                 </li>
-                                <li onClick={handleLogOut} className='hidden lg:flex items-center cursor-pointer font-bold text-red-700'>
+                                <li onClick={handleLogOut} className='hidden lg:flex items-center cursor-pointer font-bold text-red-400'>
                                     Logout
                                 </li>
                             </div>

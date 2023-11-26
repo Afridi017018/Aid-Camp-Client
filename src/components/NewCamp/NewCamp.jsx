@@ -31,7 +31,6 @@ const NewCamp = ({ page_title, upcoming }) => {
             }
         });
 
-        console.log(res.data.data.display_url);
 
         const obj = {
             name: form.name.value,
