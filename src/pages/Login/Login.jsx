@@ -11,7 +11,7 @@ const Login = () => {
     const navigate = useNavigate();
     // const axios = useAxios();
 
-    const { signIn, signInGoogle, user, setLoading } = useContext(AuthContext);
+    const { signIn, signInGoogle, user, setLoading, userInfo, setUserInfo } = useContext(AuthContext);
 
     const handleLogin = async (e) => {
         e.preventDefault();

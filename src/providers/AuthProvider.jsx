@@ -2,6 +2,7 @@ import React, { createContext, useEffect } from 'react';
 import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "firebase/auth";
 import app from '../firebase/firebase.config'
 import { useState } from 'react';
+import useAxios from '../hooks/useAxios';
 // import useAxios from '../../hooks/useAxios';
 
 
@@ -14,9 +15,10 @@ const googleProvider = new GoogleAuthProvider();
 // const axios = useAxios();
 
 const AuthProvider = ({ children }) => {
-
+const axios = useAxios();
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [userInfo, setUserInfo] = useState(null)
 
     const createUser = (email, password) => {
         setLoading(true);
@@ -45,6 +47,18 @@ const AuthProvider = ({ children }) => {
     }
 
 
+    const getUserInfo = async(email)=>{
+        const data = await axios.get(`/api/user/get-user-info?email=${email}`)
+// console.log(data.data.data.name)
+        setLoading(true);
+        updateProfile(auth.currentUser, {
+            displayName: data.data.data.name,
+        })
+        setLoading(false);
+        setUserInfo(data.data.data);
+    }
+
+
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
 
@@ -53,6 +67,12 @@ const AuthProvider = ({ children }) => {
             setLoading(false);
 
             const loggedUser = { email: currentUser?.email || user?.email };
+
+            if (currentUser) {
+                  getUserInfo(currentUser?.email);
+            }
+
+
             // if (currentUser) {
             //     axios.post('/access-token', loggedUser)
             // }
@@ -70,7 +90,7 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         // await axios.post(`/logout`,{user:user.email});
         await signOut(auth)
-        
+
     }
 
     const authInfo = {
@@ -82,7 +102,9 @@ const AuthProvider = ({ children }) => {
         logOut,
         loading,
         setLoading,
-
+        userInfo,
+        setUserInfo,
+        getUserInfo
 
     }
 
