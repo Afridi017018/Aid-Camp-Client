@@ -32,7 +32,6 @@ const Register = () => {
 
 
 
-
         //    console.log(res.data.data.display_url)
         // console.log(e.target.image.files[0])
 
