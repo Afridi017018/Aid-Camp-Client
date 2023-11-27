@@ -15,6 +15,7 @@ import ManageRegisteredCamps from "./pages/ManageRegisteredCamps/ManageRegistere
 import ManageUpcoming from "./pages/ManageUpcoming/ManageUpcoming";
 import OrganizerProfile from "./pages/OrganizerProfile/OrganizerProfile";
 import ParticipantProfile from "./pages/ParticipantProfile/ParticipantProfile";
+import Payment from "./pages/Payment/Payment";
 import PaymentHistory from "./pages/PaymentHistory/PaymentHistory";
 import ProfessionalProfile from "./pages/ProfessionalProfile/ProfessionalProfile";
 import Register from "./pages/Register/Register";
@@ -114,6 +115,10 @@ export const router = createBrowserRouter([
             {
                 path: "professional-profile",
                 element: <ProfessionalProfile />,
+            },
+            {
+                path: "payment/:id",
+                element: <Payment />,
             },
 
 

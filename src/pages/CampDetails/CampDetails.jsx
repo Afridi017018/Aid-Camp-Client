@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 
 import { Modal } from 'react-responsive-modal';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import useAuth from '../../hooks/useAuth';
 import useAxios from '../../hooks/useAxios';
 import Loading from '../Loading/Loading';
@@ -47,13 +48,14 @@ const CampDetails = () => {
 
 
 
-    const handleRegistrationSubmit = (e) => {
+    const handleRegistrationSubmit = async (e) => {
         e.preventDefault();
 
         const form = e.target;
 
         const obj = {
             userId: userInfo._id,
+            campId: data.data.data._id,
             email: userInfo.email,
             age: form.age.value,
             gender: form.gender.value,
@@ -65,7 +67,12 @@ const CampDetails = () => {
         }
 
 
-        console.log(obj)
+        const result = await axios.post('/api/join/join-reg', obj )
+        
+        toast.dismiss();
+        toast.success(result.data.message);
+
+        onCloseModal();
 
     };
 
@@ -204,7 +211,7 @@ const CampDetails = () => {
                                     Fees
                                 </label>
                                 <input
-                                    type="text"
+                                    type="number"
                                     name="fees"
                                     value={data.data.data.fees}
                                     className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
