@@ -104,7 +104,7 @@ const CheckoutForm = ({ regDetails }) => {
                     text: `Transaction Id: ${paymentIntent.id}`,
                     icon: "success"
                 });
-                navigate('/dashboard/registered-camps')
+                navigate('/dashboard/payment-history')
 
 
             }
