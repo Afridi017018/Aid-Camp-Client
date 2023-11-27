@@ -5,12 +5,12 @@ import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
 import useAxios from '../../hooks/useAxios';
 
-const CheckoutForm = ({regDetails}) => {
+const CheckoutForm = ({ regDetails }) => {
 
     // console.log(regDetails.campId.fees)
 
     const axios = useAxios();
-    const {user} = useAuth();
+    const { user } = useAuth();
     const navigate = useNavigate();
 
     const [error, setError] = useState('');
@@ -89,7 +89,7 @@ const CheckoutForm = ({regDetails}) => {
 
                 // // now save the payment in the database
                 const payment = {
-                    
+
                     joinId: regDetails._id,
                     transaction: paymentIntent.id,
                     payment_status: "paid"
@@ -103,9 +103,9 @@ const CheckoutForm = ({regDetails}) => {
                     title: "Payment Successful!",
                     text: `Transaction Id: ${paymentIntent.id}`,
                     icon: "success"
-                  });
-                    navigate('/dashboard/registered-camps')
-           
+                });
+                navigate('/dashboard/registered-camps')
+
 
             }
         }
@@ -121,7 +121,7 @@ const CheckoutForm = ({regDetails}) => {
 
     return (
 
-<form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <CardElement
                 options={{
                     style: {
@@ -139,12 +139,12 @@ const CheckoutForm = ({regDetails}) => {
                 }}
             />
             <div className='my-10'>
-            <button className=" w-full px-4 py-1 bg-blue-600 text-white rounded" type="submit" disabled={!stripe || !clientSecret}>
-                Pay
-            </button>
+                <button className=" w-full px-4 py-1 bg-blue-600 text-white rounded" type="submit" disabled={!stripe || !clientSecret}>
+                    Pay
+                </button>
             </div>
             <p className="text-red-600">{error}</p>
-           
+
         </form>
 
     );

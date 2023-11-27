@@ -1,6 +1,8 @@
+import { async } from '@firebase/util';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { useNavigate } from 'react-router-dom/dist';
+import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
 import useAxios from '../../hooks/useAxios';
 import Loading from '../Loading/Loading';
@@ -29,6 +31,33 @@ const RegisteredCamps = () => {
     }
 
     // console.log(data.data.data)
+
+
+    const handleCancel = async (id) => {
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, cancel it!"
+          }).then(async(result) => {
+            if (result.isConfirmed) {
+                const result = await axios.delete(`/api/join/delete-reg-camp/${id}`);
+                refetch();
+              Swal.fire({
+                title: "Canceled!",
+                text: "Your file has been deleted.",
+                icon: "success"
+              });
+            }
+          });
+
+
+
+    }
 
 
     return (
@@ -69,12 +98,12 @@ const RegisteredCamps = () => {
                                     </td>
                                     <td>${element.campId.fees}</td>
 
-                                    <td>{element.payment_status === "unpaid" ? <button onClick={()=>navigate(`/dashboard/payment/${element._id}`)} className='bg-blue-500 text-white px-3 py-1 rounded'>Pay</button> : <p className='text-gray-600 font-bold'>Paid</p>}</td>
+                                    <td>{element.payment_status === "unpaid" ? <button onClick={() => navigate(`/dashboard/payment/${element._id}`)} className='bg-blue-500 text-white px-3 py-1 rounded'>Pay</button> : <p className='text-gray-600 font-bold'>Paid</p>}</td>
 
-                                    {element.confirmation_status ==="pending" && <td className='text-gray-500'>Pending</td>}
-                                    {element.confirmation_status ==="confirmed" && <td className='text-green-600 font-bold'>Confirmed</td>}
+                                    {element.confirmation_status === "pending" && <td className='text-gray-500'>Pending</td>}
+                                    {element.confirmation_status === "confirmed" && <td className='text-green-600 font-bold'>Confirmed</td>}
 
-                                    <td>{element.payment_status === "unpaid" && <button className='px-3 py-1 rounded bg-gray-500 text-white'>Cancel</button>}</td>
+                                    <td>{element.payment_status === "unpaid" && <button onClick={() => handleCancel(element._id)} className='px-3 py-1 rounded bg-gray-500 text-white'>Cancel</button>}</td>
 
                                 </tr>
                             ))
