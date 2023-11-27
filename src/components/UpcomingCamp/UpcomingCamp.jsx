@@ -1,8 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom/dist';
 
-const UpcomingCamp = ({element}) => {
+const UpcomingCamp = ({ element }) => {
 
-    console.log(element)
+    const navigate = useNavigate();
 
     return (
         <div>
@@ -18,9 +19,10 @@ const UpcomingCamp = ({element}) => {
                     <div className='font-bold text-gray-600'>
                         <p>Service: {element.service}</p>
                         <p>Target Audience: {element.target}</p>
+                        <p>Fees: ${element.fees}</p>
                     </div>
                     <div className="card-actions justify-center mt-2">
-                        <button className="bg-blue-600 px-4 py-1 rounded text-white">Details</button>
+                        <button onClick={() => navigate(`/camp-details/${element._id}`)} className="bg-blue-600 px-4 py-1 rounded text-white">Details</button>
                     </div>
                 </div>
             </div>

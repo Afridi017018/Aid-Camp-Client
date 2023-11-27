@@ -1,8 +1,10 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom/dist';
 
 const CampCard= ({element}) => {
 
+  const navigate = useNavigate();
 
   return (
     <div className="mx-auto w-full">
@@ -20,11 +22,12 @@ const CampCard= ({element}) => {
             <p className="mb-2">
               Service: {element.service}
             </p>
-            <p className="mb-2">Participant: {element.participant_count}</p>
-            <p>Target Audience: {element.target}</p>
+            <p className="mb-2">Participants: {element.participant_count}</p>
+            <p className='mb-2'>Target Audience: {element.target}</p>
+            <p>Fees: ${element.fees}</p>
             </div>
             <div className='text-center'>
-            <button className='bg-blue-600 px-3 py-1 rounded text-white mt-5 hover:bg-blue-800'>See Details</button>
+            <button onClick={()=>navigate(`/camp-details/${element._id}`)} className='bg-blue-600 px-3 py-1 rounded text-white mt-5 hover:bg-blue-800'>See Details</button>
             </div>
           </div>
 

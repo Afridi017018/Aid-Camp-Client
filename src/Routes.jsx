@@ -37,7 +37,7 @@ export const router = createBrowserRouter([
                 element: <Home />,
             },
             {
-                path: "/camp-details",
+                path: "/camp-details/:campId",
                 element: <CampDetails />,
             },
             {
