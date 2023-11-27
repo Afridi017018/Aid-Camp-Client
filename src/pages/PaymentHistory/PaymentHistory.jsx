@@ -65,7 +65,7 @@ const PaymentHistory = () => {
                                         {element.campId.date}, {element.campId.time}
                                     </td>
                                     <td className='text-gray-600'>{element.transaction}</td>
-                                    <td>{element.campId.fees}</td>
+                                    <td>${element.campId.fees}</td>
 
                                     <td className='text-gray-600 font-bold capitalize'>{element.payment_status}</td>
 
