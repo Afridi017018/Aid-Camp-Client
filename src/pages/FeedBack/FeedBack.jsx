@@ -70,7 +70,10 @@ const FeedBack = () => {
         Swal.fire({
             title: result.data.message,
             icon: "success"
-          });
+        });
+
+        onCloseModal();
+        setCurrentElement(null);
 
     }
 
@@ -142,7 +145,7 @@ const FeedBack = () => {
                 <div className="bg-white p-4 rounded-md shadow-md w-96">
                     <h2 className="text-2xl font-semibold mb-4">Review {currentElement?.campId.name}</h2>
                     <form onSubmit={handleSubmit}>
-                       
+
                         <div className="mb-4">
                             <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="age">
                                 Feedback

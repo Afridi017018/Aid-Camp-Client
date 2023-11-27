@@ -7,8 +7,8 @@ const UpcomingCamp = ({ element }) => {
 
     return (
         <div>
-            <div className="card card-side bg-base-100 h-64 border rounded-none shadow">
-                <img className='w-52 lg:w-80 h-full' src={element.image} />
+            <div className="card card-side bg-base-100 h-72 border rounded-none shadow">
+                <img className='w-40 md:w-52 lg:w-80 h-full' src={element.image} />
                 <div className="card-body">
                     <h2 className="card-title">{element.name}</h2>
                     <div className='text-gray-600 text-sm'>
@@ -18,7 +18,7 @@ const UpcomingCamp = ({ element }) => {
                     </div>
                     <div className='font-bold text-gray-600'>
                         <p>Service: {element.service}</p>
-                        <p>Target Audience: {element.target}</p>
+                        <p>Audience: {element.target}</p>
                         <p>Fees: ${element.fees}</p>
                     </div>
                     <div className="card-actions justify-center mt-2">
