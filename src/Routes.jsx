@@ -4,6 +4,8 @@ import DashBoard from "./LayOut/DashBoard";
 import AcceptedCamps from "./pages/AcceptedCamps/AcceptedCamps";
 import AddCamp from "./pages/AddCamp/AddCamp";
 import AddUpcomingCamp from "./pages/AddUpcomingCamp/AddUpcomingCamp";
+import AllPopularCamps from "./pages/AllPopularCamps/AllPopularCamps";
+import AllUpcomingCamps from "./pages/AllUpcomingCamps/AllUpcomingCamps";
 import AvailableCamps from "./pages/AvailableCamps/AvailableCamps";
 
 import CampDetails from "./pages/CampDetails/CampDetails";
@@ -136,6 +138,15 @@ export const router = createBrowserRouter([
                 path: "accepted-camps",
                 element: <AcceptedCamps />,
             },
+            {
+                path: "all-popular-camps",
+                element: <AllPopularCamps />,
+            },
+            {
+                path: "all-upcoming-camps",
+                element: <AllUpcomingCamps />,
+            },
+
 
         ]
     },

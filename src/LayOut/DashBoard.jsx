@@ -46,6 +46,13 @@ const DashBoard = () => {
                     <li>
                         <NavLink to='/dashboard/accepted-camps'>Accepted Camps</NavLink>
                     </li>
+
+                    <li>
+                        <NavLink to='/dashboard/all-popular-camps'>Popular Camps</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/dashboard/all-upcoming-camps'>Upcoming Camps</NavLink>
+                    </li>
                     
 
 
