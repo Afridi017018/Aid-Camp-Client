@@ -173,7 +173,7 @@ const ManageUpcoming = () => {
                                             <button onClick={()=> navigate(`/dashboard/interested-participants/${element._id}`)} className='bg-gray-500 text-white px-2 py-1 rounded'>Participants</button>
 
 
-                                            <button className=' bg-cyan-500 text-white px-2 py-1 rounded'>Professionals
+                                            <button onClick={()=> navigate(`/dashboard/interested-professionals/${element._id}`)}  className=' bg-cyan-500 text-white px-2 py-1 rounded'>Professionals
                                             </button>
                                         </div>
 
