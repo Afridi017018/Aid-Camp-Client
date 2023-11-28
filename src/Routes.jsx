@@ -9,6 +9,8 @@ import CampDetails from "./pages/CampDetails/CampDetails";
 import ContactUs from "./pages/ContactUs/ContactUs";
 import FeedBack from "./pages/FeedBack/FeedBack";
 import Home from "./pages/Home/Home";
+import InterestedParticipants from "./pages/InterestedParticipants/InterestedParticipants";
+import InterestedProfessionals from "./pages/InterestedProfessionals/InterestedProfessionals";
 import Login from "./pages/Login/Login";
 import ManageCamps from "./pages/ManageCamps/ManageCamps";
 import ManageRegisteredCamps from "./pages/ManageRegisteredCamps/ManageRegisteredCamps";
@@ -120,7 +122,15 @@ export const router = createBrowserRouter([
                 path: "payment/:id",
                 element: <Payment />,
             },
-
+           
+            {
+                path: "interested-participants/:id",
+                element: <InterestedParticipants />,
+            },
+            {
+                path: "interested-professionals/:id",
+                element: <InterestedProfessionals />,
+            },
 
         ]
     },

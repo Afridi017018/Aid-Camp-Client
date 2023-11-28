@@ -41,7 +41,7 @@ const FeedBack = () => {
     const currentDate = moment(Date.now()).format("DD/MM/YYYY")
 
 
-    const newData = data.data.data.filter((e) => moment(currentDate, "DD/MM/YYYY").isSameOrAfter(moment(e.campId.date, "DD/MM/YYYY")))
+    const newData = data.data.data.filter((e) => moment(currentDate, "DD/MM/YYYY").isAfter(moment(e.campId.date, "DD/MM/YYYY")))
 
 
     const handleModal = async (element) => {

@@ -40,7 +40,7 @@ const NewCamp = ({ page_title, upcoming }) => {
             time: moment(form.time.value, 'HH:mm').format('h:mm A'),
             location: form.location.value,
             service: form.service.value,
-            professional: form.professional.value,
+            professional: [form.professional.value],
             target: form.target.value,
             description: form.description.value,
             upcoming,

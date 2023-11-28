@@ -15,7 +15,7 @@ const googleProvider = new GoogleAuthProvider();
 // const axios = useAxios();
 
 const AuthProvider = ({ children }) => {
-const axios = useAxios();
+    const axios = useAxios();
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [userInfo, setUserInfo] = useState(null)
@@ -47,9 +47,9 @@ const axios = useAxios();
     }
 
 
-    const getUserInfo = async(email)=>{
+    const getUserInfo = async (email) => {
         const data = await axios.get(`/api/user/get-user-info?email=${email}`)
-// console.log(data.data.data.name)
+        // console.log(data.data.data.name)
         setLoading(true);
         updateProfile(auth.currentUser, {
             displayName: data.data.data.name,
@@ -69,9 +69,11 @@ const axios = useAxios();
             const loggedUser = { email: currentUser?.email || user?.email };
 
             if (currentUser) {
-                  getUserInfo(currentUser?.email);
+                getUserInfo(currentUser?.email);
             }
-
+            else {
+                setUserInfo(null)
+            }
 
             // if (currentUser) {
             //     axios.post('/access-token', loggedUser)

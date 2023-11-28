@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { Modal } from 'react-responsive-modal';
+import { useNavigate } from 'react-router-dom/dist';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
@@ -11,6 +12,7 @@ const ManageUpcoming = () => {
 
     const { user } = useAuth();
     const axios = useAxios();
+    const navigate = useNavigate();
 
     const [updateElement, setUpdateElement] = useState(null)
 
@@ -95,7 +97,7 @@ const ManageUpcoming = () => {
 
     }
 
-    const handleDelete = async (campId)=>{
+    const handleDelete = async (campId) => {
 
         Swal.fire({
             title: "Are you sure?",
@@ -105,25 +107,25 @@ const ManageUpcoming = () => {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
-          }).then(async(result) => {
+        }).then(async (result) => {
             if (result.isConfirmed) {
-                
+
                 await axios.delete(`/api/camp/delete-camp/${campId}`);
                 refetch();
 
-              Swal.fire({
-                title: "Deleted!",
-                text: "Your camp has been deleted",
-                icon: "success"
-              });
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your camp has been deleted",
+                    icon: "success"
+                });
             }
-          });
+        });
 
     }
 
 
 
-    
+
     return (
         <div className='px-2 lg:px-20 my-10'>
 
@@ -135,48 +137,64 @@ const ManageUpcoming = () => {
 
                             <th>Name</th>
                             <th>Date & Time</th>
-                            <th>Total Participants</th>
-                            <th>Total Interested Professionals</th>
+                            <th>Approved Participants</th>
+                            <th>Approved Interested Professionals</th>
                             <th>Target Audience</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-           
+
                         {
                             data.data.data.length > 0 &&
 
-                            data.data.data.map((element)=>(
+                            data.data.data.map((element) => (
                                 <tr key={element._id}>
-                            <td>
-                                <div className="flex items-center gap-3">
+                                    <td>
+                                        <div className="flex items-center gap-3">
 
-                                    <div>
-                                        <div className="font-bold">{element.name}</div>
-                                        <div className="text-sm opacity-50">{element.location}</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                            {element.date}, {element.time}
-                            </td>
-                            <td>{element.participant_count}</td>
-                            <td>{element.professional_count}</td>
-                            <td>{element.target}</td>
-
-                            <td>
-                                <div className='flex gap-2'>
-                                <div className='flex gap-2'>
-                                            <button onClick={() => handleModal(element)} className='bg-blue-500 text-white px-2 py-1 rounded'>Update</button>
-                                            <button onClick={()=> handleDelete(element._id)} className='bg-red-600 text-white px-2 py-1 rounded'>Delete</button>
+                                            <div>
+                                                <div className="font-bold">{element.name}</div>
+                                                <div className="text-sm opacity-50">{element.location}</div>
+                                            </div>
                                         </div>
-                                </div>
-                            </td>
+                                    </td>
+                                    <td>
+                                        {element.date}, {element.time}
+                                    </td>
+                                    <td>{element.participant_count}</td>
+                                    <td>{element.professional_count}</td>
+                                    <td>{element.target}</td>
 
-                        </tr>
+                                    <td>
+
+
+                                        <div className='flex gap-2'>
+                                            <button onClick={()=> navigate(`/dashboard/interested-participants/${element._id}`)} className='bg-gray-500 text-white px-2 py-1 rounded'>Participants</button>
+
+
+                                            <button className=' bg-cyan-500 text-white px-2 py-1 rounded'>Professionals
+                                            </button>
+                                        </div>
+
+
+
+
+                                        <div className='flex gap-2 mt-2'>
+                                            <button className='bg-green-500 text-white px-2 py-1 rounded'>Publish</button>
+                                            <button onClick={() => handleModal(element)} className='bg-blue-500 text-white px-2 py-1 rounded'>Update</button>
+                                            <button onClick={() => handleDelete(element._id)} className='bg-red-600 text-white px-2 py-1 rounded'>Delete</button>
+
+
+                                        </div>
+
+
+                                    </td>
+
+                                </tr>
                             ))
                         }
-                        
+
 
                     </tbody>
 
