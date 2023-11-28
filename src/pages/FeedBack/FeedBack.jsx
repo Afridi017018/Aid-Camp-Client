@@ -81,7 +81,9 @@ const FeedBack = () => {
     return (
         <div className='px-2 lg:px-20 my-10'>
 
-            <div className="overflow-x-auto shadow">
+            <div className='text-center font-bold'>Give Feedback</div>
+
+            <div className="overflow-x-auto shadow mt-5">
                 <table className="table">
                     {/* head */}
                     <thead>

@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./LayOut/App";
 import DashBoard from "./LayOut/DashBoard";
+import AcceptedCamps from "./pages/AcceptedCamps/AcceptedCamps";
 import AddCamp from "./pages/AddCamp/AddCamp";
 import AddUpcomingCamp from "./pages/AddUpcomingCamp/AddUpcomingCamp";
 import AvailableCamps from "./pages/AvailableCamps/AvailableCamps";
@@ -130,6 +131,10 @@ export const router = createBrowserRouter([
             {
                 path: "interested-professionals/:id",
                 element: <InterestedProfessionals />,
+            },
+            {
+                path: "accepted-camps",
+                element: <AcceptedCamps />,
             },
 
         ]
