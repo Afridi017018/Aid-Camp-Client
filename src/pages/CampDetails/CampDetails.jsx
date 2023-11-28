@@ -159,7 +159,7 @@ const handleProfessionalSubmit = async(e)=>{
                     <p>Venue: {data.data.data.location}</p>
                     <p>Service: {data.data.data.service}</p>
                     <p>Audience: {data.data.data.target}</p>
-                    <div className='flex gap-1'>Professionals: {data.data.data.professional.map((e,i)=><p key={i}>{e}</p>)} </div>
+                    <div className='flex gap-1'>Professionals: {data.data.data.professional.map((e,i)=><p key={i}>{e}{i!==data.data.data.professional.length-1 && " , "}</p>)} </div>
                     <p>Participants: {data.data.data.participant_count}</p>
                     <p>Fees: ${data.data.data.fees}</p>
                 </div>

@@ -125,6 +125,17 @@ const ManageUpcoming = () => {
 
 
 
+    const handlePublish = async (id)=>{
+        const result = await axios.put(`/api/camp/publish-camp/${id}`)
+        Swal.fire({
+            title: result.data.message,
+            icon: "success"
+          });
+
+          refetch();
+    }
+
+
 
     return (
         <div className='px-2 lg:px-20 my-10'>
@@ -181,7 +192,19 @@ const ManageUpcoming = () => {
 
 
                                         <div className='flex gap-2 mt-2'>
-                                            <button className='bg-green-500 text-white px-2 py-1 rounded'>Publish</button>
+                                            
+                                            {element.professional_count > 0 ?
+
+                                            element.participant_count > 2 ?
+
+                                            <button onClick={()=>handlePublish(element._id)} className='bg-green-500 text-white px-2 py-1 rounded'>Publish</button>
+                                            :
+                                            ""
+                                            :
+                                            ""
+                                            
+                                        }
+
                                             <button onClick={() => handleModal(element)} className='bg-blue-500 text-white px-2 py-1 rounded'>Update</button>
                                             <button onClick={() => handleDelete(element._id)} className='bg-red-600 text-white px-2 py-1 rounded'>Delete</button>
 
