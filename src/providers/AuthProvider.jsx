@@ -84,9 +84,11 @@ const AuthProvider = ({ children }) => {
         }
     }, [])
 
+
+
     const logOut = async () => {
         setLoading(true);
-        // await axios.post(`/logout`,{user:user.email});
+        await axios.post(`/api/verification/logout`,{user:user.email});
         await signOut(auth)
 
     }

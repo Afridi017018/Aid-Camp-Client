@@ -17,13 +17,14 @@ const DashBoard = () => {
                             <NavLink to='/'>Home</NavLink>
                         </li>
 
+                        <li>
+                            <NavLink to='/dashboard/user-profile'>Profile</NavLink>
+                        </li>
 
                         {
                             userInfo?.role === "participant" &&
                             <>
-                                <li>
-                                    <NavLink to='/dashboard/participant-profile'>Profile</NavLink>
-                                </li>
+
                                 <li>
                                     <NavLink to='/dashboard/registered-camps'>Registered Camps</NavLink>
                                 </li>
@@ -40,9 +41,7 @@ const DashBoard = () => {
                         {
                             userInfo?.role === "organizer" &&
                             <>
-                                <li>
-                                    <NavLink to='/dashboard/organizer-profile'>Profile</NavLink>
-                                </li>
+                            
                                 <li>
                                     <NavLink to='/dashboard/add-camp'>Add Camp</NavLink>
                                 </li>
@@ -66,9 +65,7 @@ const DashBoard = () => {
                             userInfo?.role === "professional" &&
 
                             <>
-                                <li>
-                                    <NavLink to='/dashboard/professional-profile'>Profile</NavLink>
-                                </li>
+                        
                                 <li>
                                     <NavLink to='/dashboard/accepted-camps'>Accepted Camps</NavLink>
                                 </li>
@@ -89,7 +86,7 @@ const DashBoard = () => {
 
                 </div>
 
-{/* 
+                {/* 
                 <div>
                     <ul className='menu p-4 gap-5'>
                         <li><Link>Logout</Link></li>

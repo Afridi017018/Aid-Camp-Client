@@ -40,7 +40,7 @@ const {user, logOut} = useAuth();
         </li>
         <li>
             <NavLink
-                to="/dashboard"
+                to="/dashboard/user-profile"
                 className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? "bg-blue-800 text-white px-2 py-1 rounded font-bold" : ""
                 }

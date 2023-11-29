@@ -1,6 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom/dist';
 
 const Banner = () => {
+
+    const navigate = useNavigate();
+
     return (
         <div>
             <div className='relative'>
@@ -28,13 +32,13 @@ const Banner = () => {
 
                 <div className='absolute w-full h-[600px] bg-black opacity-60 top-0'></div>
                 <div>
-                <div className=' absolute bottom-40 w-full text-white text-center text-sm lg:text-xl font-bold'>
-                    <h3 className='my-2'>Revolutionize Community Health with Our Aid Camp!</h3>
-                    <h3 className='m-2'>Seamless Organization, and Impactful Outreach</h3>
-                    <h3 className='m-2'>Empower Your Healthcare Initiatives for a Healthier Tomorrow!</h3>
+                    <div className=' absolute bottom-40 w-full text-white text-center text-sm lg:text-xl font-bold'>
+                        <h3 className='my-2'>Revolutionize Community Health with Our Aid Camp!</h3>
+                        <h3 className='m-2'>Seamless Organization, and Impactful Outreach</h3>
+                        <h3 className='m-2'>Empower Your Healthcare Initiatives for a Healthier Tomorrow!</h3>
 
-                    <button className='my-5 bg-blue-700 hover:bg-blue-900 text-base font-normal px-3 py-1 rounded'>Join Now</button>
-                </div>
+                        <button onClick={() => navigate('/available-camps')} className='my-5 bg-blue-700 hover:bg-blue-900 text-base font-normal px-3 py-1 rounded'>All Camps</button>
+                    </div>
                 </div>
 
             </div>

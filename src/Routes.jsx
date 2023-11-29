@@ -7,7 +7,6 @@ import AddUpcomingCamp from "./pages/AddUpcomingCamp/AddUpcomingCamp";
 import AllPopularCamps from "./pages/AllPopularCamps/AllPopularCamps";
 import AllUpcomingCamps from "./pages/AllUpcomingCamps/AllUpcomingCamps";
 import AvailableCamps from "./pages/AvailableCamps/AvailableCamps";
-
 import CampDetails from "./pages/CampDetails/CampDetails";
 import ContactUs from "./pages/ContactUs/ContactUs";
 import FeedBack from "./pages/FeedBack/FeedBack";
@@ -18,13 +17,12 @@ import Login from "./pages/Login/Login";
 import ManageCamps from "./pages/ManageCamps/ManageCamps";
 import ManageRegisteredCamps from "./pages/ManageRegisteredCamps/ManageRegisteredCamps";
 import ManageUpcoming from "./pages/ManageUpcoming/ManageUpcoming";
-import OrganizerProfile from "./pages/OrganizerProfile/OrganizerProfile";
-import ParticipantProfile from "./pages/ParticipantProfile/ParticipantProfile";
 import Payment from "./pages/Payment/Payment";
 import PaymentHistory from "./pages/PaymentHistory/PaymentHistory";
-import ProfessionalProfile from "./pages/ProfessionalProfile/ProfessionalProfile";
 import Register from "./pages/Register/Register";
 import RegisteredCamps from "./pages/RegisteredCamps/RegisteredCamps";
+import UserProfile from "./pages/UserProfile/UserProfile";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -70,7 +68,7 @@ export const router = createBrowserRouter([
 
     {
         path: "dashboard",
-        element: <DashBoard />,
+        element: <PrivateRoute><DashBoard /></PrivateRoute>,
         // errorElement: <ErrorPage />,
         children: [
             {
@@ -78,73 +76,66 @@ export const router = createBrowserRouter([
                 element: <Home />,
             },
             {
-                path: "participant-profile",
-                element: <ParticipantProfile />,
+                path: "user-profile",
+                element: <PrivateRoute><UserProfile /></PrivateRoute>,
             },
             {
                 path: "registered-camps",
-                element: <RegisteredCamps />,
+                element: <Private><RegisteredCamps /></Private>,
             },
             {
                 path: "payment-history",
-                element: <PaymentHistory />,
+                element: <PrivateRoute><PaymentHistory /></PrivateRoute>,
             },
             {
                 path: "feedback",
-                element: <FeedBack />,
+                element: <PrivateRoute><FeedBack /></PrivateRoute>,
             },
-            {
-                path: "organizer-profile",
-                element: <OrganizerProfile />,
-            },
+
             {
                 path: "add-camp",
-                element: <AddCamp />,
+                element: <PrivateRoute><AddCamp /></PrivateRoute>,
             },
             {
                 path: "manage-camps",
-                element: <ManageCamps />,
+                element: <PrivateRoute><ManageCamps /></PrivateRoute>,
             },
             {
                 path: "manage-registered-camps",
-                element: <ManageRegisteredCamps />,
+                element: <PrivateRoute><ManageRegisteredCamps /></PrivateRoute>,
             },
             {
                 path: "add-upcoming-camp",
-                element: <AddUpcomingCamp />,
+                element: <PrivateRoute><AddUpcomingCamp /></PrivateRoute>,
             },
             {
                 path: "manage-upcoming-camps",
-                element: <ManageUpcoming />,
-            },
-            {
-                path: "professional-profile",
-                element: <ProfessionalProfile />,
+                element: <PrivateRoute><ManageUpcoming /></PrivateRoute>,
             },
             {
                 path: "payment/:id",
-                element: <Payment />,
+                element: <PrivateRoute><Payment /></PrivateRoute>,
             },
            
             {
                 path: "interested-participants/:id",
-                element: <InterestedParticipants />,
+                element: <PrivateRoute><InterestedParticipants /></PrivateRoute>,
             },
             {
                 path: "interested-professionals/:id",
-                element: <InterestedProfessionals />,
+                element: <PrivateRoute><InterestedProfessionals /></PrivateRoute>,
             },
             {
                 path: "accepted-camps",
-                element: <AcceptedCamps />,
+                element: <PrivateRoute><AcceptedCamps /></PrivateRoute>,
             },
             {
                 path: "all-popular-camps",
-                element: <AllPopularCamps />,
+                element: <PrivateRoute><AllPopularCamps /></PrivateRoute>,
             },
             {
                 path: "all-upcoming-camps",
-                element: <AllUpcomingCamps />,
+                element: <PrivateRoute><AllUpcomingCamps /></PrivateRoute>,
             },
 
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import Profile from '../../components/Profile/Profile';
 
-const ProfessionalProfile = () => {
+const UserProfile = () => {
+
     return (
         <div>
             <Profile />
@@ -9,4 +10,4 @@ const ProfessionalProfile = () => {
     );
 };
 
-export default ProfessionalProfile;
+export default UserProfile;
