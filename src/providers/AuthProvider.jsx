@@ -70,17 +70,13 @@ const AuthProvider = ({ children }) => {
 
             if (currentUser) {
                 getUserInfo(currentUser?.email);
+                axios.post('/api/verification/access-token', loggedUser)
             }
             else {
                 setUserInfo(null)
             }
 
-            // if (currentUser) {
-            //     axios.post('/access-token', loggedUser)
-            // }
-            // else{
-            //     console.log("logged out!!!")
-            // }
+
 
         });
         return () => {
