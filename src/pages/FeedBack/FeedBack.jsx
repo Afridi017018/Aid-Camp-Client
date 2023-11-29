@@ -7,6 +7,7 @@ import Loading from '../Loading/Loading';
 
 import { Modal } from 'react-responsive-modal';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const FeedBack = () => {
 
@@ -80,6 +81,10 @@ const FeedBack = () => {
 
     return (
         <div className='px-2 lg:px-20 my-10'>
+
+            <Helmet>
+                <title>Aid Camp | Feedback</title>
+            </Helmet>
 
             <div className='text-center font-bold'>Give Feedback</div>
 

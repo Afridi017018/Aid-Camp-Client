@@ -9,12 +9,13 @@ import moment from 'moment/moment';
 import { toast } from 'react-toastify';
 
 import { useParams } from 'react-router-dom/dist';
+import { Helmet } from 'react-helmet-async';
 
 const InterestedProfessionals = () => {
 
 
     const axios = useAxios();
-    const {id} = useParams();
+    const { id } = useParams();
 
 
 
@@ -29,7 +30,7 @@ const InterestedProfessionals = () => {
 
     const { data, isLoading, refetch } = useQuery({
         queryKey: ["interestedProfessionals", id],
-        queryFn: getInterestedProfessionals 
+        queryFn: getInterestedProfessionals
     })
 
     if (isLoading) {
@@ -37,22 +38,27 @@ const InterestedProfessionals = () => {
     }
 
 
-    const handleAccept = async (id)=>{
+    const handleAccept = async (id) => {
 
-         const result = await axios.put(`/api/professional/accept-interested-professionals/${id}`);
+        const result = await axios.put(`/api/professional/accept-interested-professionals/${id}`);
 
-         refetch();
-         toast.dismiss();
-         toast.success(result.data.message);
+        refetch();
+        toast.dismiss();
+        toast.success(result.data.message);
 
 
     }
-    
+
 
     // console.log(data.data.data)
 
     return (
         <div className='px-2 lg:px-20 my-10'>
+
+            <Helmet>
+                <title>Aid Camp | Interested Professionals</title>
+            </Helmet>
+
             <div className='text-center font-bold'>Interested Professionals</div>
             <div className="overflow-x-auto shadow mt-5">
                 <table className="table">
@@ -77,14 +83,14 @@ const InterestedProfessionals = () => {
                                     <td className='font-bold'>
                                         {element.userId.name}
                                     </td>
-                               
+
                                     <td className='capitalize'>{element.specialization}</td>
                                     <td className={`font-bold capitalize ${element.approve_status === "accepted" && "text-green-500"} `}>{element.approve_status}</td>
 
                                     <td>
                                         {
                                             element.approve_status === "pending" &&
-                                            <button onClick={()=>handleAccept(element._id)} className='bg-green-500 text-white px-2 py-1 rounded'>Accept</button>
+                                            <button onClick={() => handleAccept(element._id)} className='bg-green-500 text-white px-2 py-1 rounded'>Accept</button>
                                         }
                                     </td>
 

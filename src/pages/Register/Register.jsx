@@ -5,9 +5,10 @@ import { useState } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import useAxios from '../../hooks/useAxios';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 
-const image_hosting_key =import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 
@@ -51,8 +52,8 @@ const Register = () => {
                 const photo = res.data.data.display_url;
                 await updateUser(name, photo);
 
-                await axios.post('/api/user/user-info', {name, email, role: role.toLowerCase()})
-               
+                await axios.post('/api/user/user-info', { name, email, role: role.toLowerCase() })
+
                 toast.success("Registered Successfully !");
 
                 navigate("/login");
@@ -73,6 +74,11 @@ const Register = () => {
 
     return (
         <div className='px-5'>
+
+            <Helmet>
+                <title>Aid Camp | Register</title>
+            </Helmet>
+
             <div className="hero min-h-screen bg-base-100">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">

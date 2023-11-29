@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Modal } from 'react-responsive-modal';
 import { useNavigate } from 'react-router-dom/dist';
 import { toast } from 'react-toastify';
@@ -125,20 +126,24 @@ const ManageUpcoming = () => {
 
 
 
-    const handlePublish = async (id)=>{
+    const handlePublish = async (id) => {
         const result = await axios.put(`/api/camp/publish-camp/${id}`)
         Swal.fire({
             title: result.data.message,
             icon: "success"
-          });
+        });
 
-          refetch();
+        refetch();
     }
 
 
 
     return (
         <div className='px-2 lg:px-20 my-10'>
+
+            <Helmet>
+                <title>Aid Camp | Manage Upcoming Camps</title>
+            </Helmet>
 
             <div className='text-center font-bold'>Manage Upcoming Camps</div>
 
@@ -183,10 +188,10 @@ const ManageUpcoming = () => {
 
 
                                         <div className='flex gap-2'>
-                                            <button onClick={()=> navigate(`/dashboard/interested-participants/${element._id}`)} className='bg-gray-500 text-white px-2 py-1 rounded'>Participants</button>
+                                            <button onClick={() => navigate(`/dashboard/interested-participants/${element._id}`)} className='bg-gray-500 text-white px-2 py-1 rounded'>Participants</button>
 
 
-                                            <button onClick={()=> navigate(`/dashboard/interested-professionals/${element._id}`)}  className=' bg-cyan-500 text-white px-2 py-1 rounded'>Professionals
+                                            <button onClick={() => navigate(`/dashboard/interested-professionals/${element._id}`)} className=' bg-cyan-500 text-white px-2 py-1 rounded'>Professionals
                                             </button>
                                         </div>
 
@@ -194,18 +199,18 @@ const ManageUpcoming = () => {
 
 
                                         <div className='flex gap-2 mt-2'>
-                                            
+
                                             {element.professional_count > 0 ?
 
-                                            element.participant_count > 2 ?
+                                                element.participant_count > 2 ?
 
-                                            <button onClick={()=>handlePublish(element._id)} className='bg-green-500 text-white px-2 py-1 rounded'>Publish</button>
-                                            :
-                                            ""
-                                            :
-                                            ""
-                                            
-                                        }
+                                                    <button onClick={() => handlePublish(element._id)} className='bg-green-500 text-white px-2 py-1 rounded'>Publish</button>
+                                                    :
+                                                    ""
+                                                :
+                                                ""
+
+                                            }
 
                                             <button onClick={() => handleModal(element)} className='bg-blue-500 text-white px-2 py-1 rounded'>Update</button>
                                             <button onClick={() => handleDelete(element._id)} className='bg-red-600 text-white px-2 py-1 rounded'>Delete</button>

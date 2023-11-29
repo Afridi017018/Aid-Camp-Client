@@ -1,6 +1,7 @@
 import { async } from '@firebase/util';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom/dist';
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
@@ -43,17 +44,17 @@ const RegisteredCamps = () => {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, cancel it!"
-          }).then(async(result) => {
+        }).then(async (result) => {
             if (result.isConfirmed) {
                 const result = await axios.delete(`/api/join/delete-reg-camp/${id}`);
                 refetch();
-              Swal.fire({
-                title: "Canceled!",
-                text: "Your file has been deleted.",
-                icon: "success"
-              });
+                Swal.fire({
+                    title: "Canceled!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                });
             }
-          });
+        });
 
 
 
@@ -62,6 +63,10 @@ const RegisteredCamps = () => {
 
     return (
         <div className='px-2 lg:px-20 my-10'>
+
+            <Helmet>
+                <title>Aid Camp | Registered Camps</title>
+            </Helmet>
 
             <div className='text-center font-bold'>Registered Camps</div>
 

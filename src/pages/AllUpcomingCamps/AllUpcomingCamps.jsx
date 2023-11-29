@@ -4,6 +4,7 @@ import useAxios from '../../hooks/useAxios';
 import Loading from '../Loading/Loading';
 
 import { useNavigate } from 'react-router-dom/dist';
+import { Helmet } from 'react-helmet-async';
 
 
 const AllUpcomingCamps = () => {
@@ -33,6 +34,11 @@ const AllUpcomingCamps = () => {
 
     return (
         <div className='px-2 lg:px-20 my-10'>
+
+            <Helmet>
+                <title>Aid Camp | Upcoming Camps</title>
+            </Helmet>
+
             <div className='text-center font-bold'>Upcoming Camps</div>
             <div className="overflow-x-auto shadow mt-5">
                 <table className="table">

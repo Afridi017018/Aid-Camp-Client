@@ -4,6 +4,7 @@ import useAxios from '../../hooks/useAxios';
 import Loading from '../Loading/Loading';
 
 import { useNavigate } from 'react-router-dom/dist';
+import { Helmet } from 'react-helmet-async';
 
 
 const AllPopularCamps = () => {
@@ -20,7 +21,7 @@ const AllPopularCamps = () => {
     }
 
 
-    const { data, isLoading} = useQuery({
+    const { data, isLoading } = useQuery({
         queryKey: ["getAllPopularCamps"],
         queryFn: getAllPopularCamps
     })
@@ -33,6 +34,11 @@ const AllPopularCamps = () => {
 
     return (
         <div className='px-2 lg:px-20 my-10'>
+
+            <Helmet>
+                <title>Aid Camp | Popular Camps</title>
+            </Helmet>
+
             <div className='text-center font-bold'>Popular Camps</div>
             <div className="overflow-x-auto shadow mt-5">
                 <table className="table">
@@ -59,15 +65,15 @@ const AllPopularCamps = () => {
                                     <td className='font-bold'>
                                         {element.name}
                                     </td>
-                               <td>
-                                {element.date} , {element.time}
-                               </td>
+                                    <td>
+                                        {element.date} , {element.time}
+                                    </td>
                                     <td>{element.location}</td>
                                     <td>{element.target}</td>
                                     <td>{element.fees}</td>
 
                                     <td>
-                                        <button onClick={()=> navigate(`/camp-details/${element._id}`)} className='px-2 rounded text-white bg-gray-500'>Details</button>
+                                        <button onClick={() => navigate(`/camp-details/${element._id}`)} className='px-2 rounded text-white bg-gray-500'>Details</button>
                                     </td>
 
                                 </tr>

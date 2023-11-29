@@ -8,6 +8,7 @@ import moment from 'moment/moment';
 import { Modal } from 'react-responsive-modal';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const ManageCamps = () => {
     const { user } = useAuth();
@@ -94,7 +95,7 @@ const ManageCamps = () => {
 
     }
 
-    const handleDelete = async (campId)=>{
+    const handleDelete = async (campId) => {
 
         Swal.fire({
             title: "Are you sure?",
@@ -104,19 +105,19 @@ const ManageCamps = () => {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
-          }).then(async(result) => {
+        }).then(async (result) => {
             if (result.isConfirmed) {
-                
+
                 await axios.delete(`/api/camp/delete-camp/${campId}`);
                 refetch();
 
-              Swal.fire({
-                title: "Deleted!",
-                text: "Your camp has been deleted",
-                icon: "success"
-              });
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your camp has been deleted",
+                    icon: "success"
+                });
             }
-          });
+        });
 
     }
 
@@ -124,6 +125,10 @@ const ManageCamps = () => {
 
     return (
         <div className='px-2 lg:px-20 my-10'>
+
+            <Helmet>
+                <title>Aid Camp | Manage Camps</title>
+            </Helmet>
 
             <div className='text-center font-bold'>Manage Camps</div>
 
@@ -167,7 +172,7 @@ const ManageCamps = () => {
                                     <td>
                                         <div className='flex gap-2'>
                                             <button onClick={() => handleModal(element)} className='bg-blue-500 text-white px-2 py-1 rounded'>Update</button>
-                                            <button onClick={()=> handleDelete(element._id)} className='bg-red-600 text-white px-2 py-1 rounded'>Delete</button>
+                                            <button onClick={() => handleDelete(element._id)} className='bg-red-600 text-white px-2 py-1 rounded'>Delete</button>
                                         </div>
                                     </td>
 

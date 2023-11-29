@@ -6,12 +6,13 @@ import Loading from '../Loading/Loading';
 import { toast } from 'react-toastify';
 import useAuth from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom/dist';
+import { Helmet } from 'react-helmet-async';
 
 
 const AcceptedCamps = () => {
 
 
-    const {user} = useAuth();
+    const { user } = useAuth();
     const axios = useAxios();
     const navigate = useNavigate();
 
@@ -22,8 +23,8 @@ const AcceptedCamps = () => {
     }
 
 
-    const { data, isLoading} = useQuery({
-        queryKey: ["getAcceptedCamps" , user],
+    const { data, isLoading } = useQuery({
+        queryKey: ["getAcceptedCamps", user],
         queryFn: getAcceptedCamps
     })
 
@@ -35,6 +36,11 @@ const AcceptedCamps = () => {
 
     return (
         <div className='px-2 lg:px-20 my-10'>
+
+            <Helmet>
+                <title>Aid Camp | Accepted Camps</title>
+            </Helmet>
+
             <div className='text-center font-bold'>Accepted Camps</div>
             <div className="overflow-x-auto shadow mt-5">
                 <table className="table">
@@ -60,14 +66,14 @@ const AcceptedCamps = () => {
                                     <td className='font-bold'>
                                         {element.campId.name}
                                     </td>
-                               <td>
-                                {element.campId.date} , {element.campId.time}
-                               </td>
+                                    <td>
+                                        {element.campId.date} , {element.campId.time}
+                                    </td>
                                     <td>{element.campId.location}</td>
                                     <td className={`font-bold capitalize text-green-500`}>{element.approve_status}</td>
 
                                     <td>
-                                        <button onClick={()=> navigate(`/camp-details/${element.campId._id}`)} className='px-2 rounded text-white bg-gray-500'>Details</button>
+                                        <button onClick={() => navigate(`/camp-details/${element.campId._id}`)} className='px-2 rounded text-white bg-gray-500'>Details</button>
                                     </td>
 
                                 </tr>

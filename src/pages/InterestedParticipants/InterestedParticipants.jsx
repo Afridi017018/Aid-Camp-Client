@@ -9,12 +9,13 @@ import moment from 'moment/moment';
 import { toast } from 'react-toastify';
 
 import { useParams } from 'react-router-dom/dist';
+import { Helmet } from 'react-helmet-async';
 
 const InterestedParticipants = () => {
 
 
     const axios = useAxios();
-    const {id} = useParams();
+    const { id } = useParams();
 
 
 
@@ -29,7 +30,7 @@ const InterestedParticipants = () => {
 
     const { data, isLoading, refetch } = useQuery({
         queryKey: ["interestedParticipants", id],
-        queryFn: getInterestedParticipants 
+        queryFn: getInterestedParticipants
     })
 
     if (isLoading) {
@@ -37,22 +38,27 @@ const InterestedParticipants = () => {
     }
 
 
-    const handleAccept = async (id)=>{
+    const handleAccept = async (id) => {
 
-         const result = await axios.put(`/api/join/accept-interested-participants/${id}`);
+        const result = await axios.put(`/api/join/accept-interested-participants/${id}`);
 
-         refetch();
-         toast.dismiss();
-         toast.success(result.data.message);
+        refetch();
+        toast.dismiss();
+        toast.success(result.data.message);
 
 
     }
-    
+
 
     // console.log(data.data.data)
 
     return (
         <div className='px-2 lg:px-20 my-10'>
+
+            <Helmet>
+                <title>Aid Camp | Interested Participants</title>
+            </Helmet>
+
             <div className='text-center font-bold'>Interested Participants</div>
             <div className="overflow-x-auto shadow mt-5">
                 <table className="table">
@@ -79,13 +85,13 @@ const InterestedParticipants = () => {
                                         {element.userId.name}
                                     </td>
                                     <td>
-                                    {element.userId.phone}
+                                        {element.userId.phone}
                                     </td>
                                     <td className='capitalize'>{element.gender}</td>
                                     <td>{element.healthInfo}</td>
 
                                     <td>
-                                        <button onClick={()=>handleAccept(element._id)} className='bg-green-500 text-white px-2 py-1 rounded'>Accept</button>
+                                        <button onClick={() => handleAccept(element._id)} className='bg-green-500 text-white px-2 py-1 rounded'>Accept</button>
                                     </td>
 
                                 </tr>

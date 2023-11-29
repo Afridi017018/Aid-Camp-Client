@@ -1,5 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -66,6 +67,11 @@ const Login = () => {
 
     return (
         <div className='px-5'>
+
+            <Helmet>
+                <title>Aid Camp | Login</title>
+            </Helmet>
+
             <div className="hero min-h-screen bg-base-100">
                 <div className="hero-content flex-col lg:flex-row-reverse lg:gap-16">
                     <div className="text-center lg:text-left lg:w-1/2">

@@ -81,7 +81,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "registered-camps",
-                element: <Private><RegisteredCamps /></Private>,
+                element: <PrivateRoute><RegisteredCamps /></PrivateRoute>,
             },
             {
                 path: "payment-history",

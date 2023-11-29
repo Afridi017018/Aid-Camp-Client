@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import AboutUs from '../../components/AboutUs/AboutUs';
 import Banner from '../../components/Banner/Banner';
 import CampCards from '../../components/CampCards/CampCards';
@@ -8,8 +9,15 @@ import UpcomingCamps from '../../components/UpcomingCamps/UpcomingCamps';
 
 
 const Home = () => {
+
+
     return (
         <div>
+
+            <Helmet>
+                <title>Aid Camp | Home</title>
+            </Helmet>
+
             <Banner />
             <CampCards />
             <UpcomingCamps />

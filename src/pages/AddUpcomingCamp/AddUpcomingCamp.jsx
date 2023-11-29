@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import NewCamp from '../../components/NewCamp/NewCamp';
 
 const AddUpcomingCamp = () => {
@@ -8,7 +9,12 @@ const AddUpcomingCamp = () => {
 
     return (
         <div>
-            <NewCamp upcoming ={upcoming} page_title={page_title}  /> 
+
+            <Helmet>
+                <title>Aid Camp | Add Upcoming Camps</title>
+            </Helmet>
+
+            <NewCamp upcoming={upcoming} page_title={page_title} />
         </div>
     );
 };

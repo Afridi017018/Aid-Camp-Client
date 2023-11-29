@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-toastify';
 
 const ContactUs = () => {
@@ -29,6 +30,11 @@ const ContactUs = () => {
       };
     return (
         <div className=''>
+
+              <Helmet>
+                <title>Aid Camp | Contact Us</title>
+            </Helmet>
+
             <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://img.freepik.com/premium-photo/red-background-with-stethoscope-red-background_836919-1341.jpg?w=826)' }}>
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className="hero-content text-center text-neutral-content">

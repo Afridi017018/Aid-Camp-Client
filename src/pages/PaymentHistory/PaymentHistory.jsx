@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import useAuth from '../../hooks/useAuth';
 import useAxios from '../../hooks/useAxios';
 import Loading from '../Loading/Loading';
@@ -30,6 +31,10 @@ const PaymentHistory = () => {
 
     return (
         <div className='px-2 lg:px-20 my-10'>
+
+            <Helmet>
+                <title>Aid Camp | Payment History</title>
+            </Helmet>
 
             <div className='text-center font-bold'>Payment History</div>
 

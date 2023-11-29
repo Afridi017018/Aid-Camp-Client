@@ -1,6 +1,7 @@
 import { async } from '@firebase/util';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom/dist';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
@@ -44,32 +45,36 @@ const manageRegisteredCamps = () => {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, cancel it!"
-          }).then(async(result) => {
+        }).then(async (result) => {
             if (result.isConfirmed) {
                 const result = await axios.delete(`/api/join/delete-reg-camp/${id}`);
                 refetch();
-              Swal.fire({
-                title: "Canceled!",
-                text: "Your file has been deleted.",
-                icon: "success"
-              });
+                Swal.fire({
+                    title: "Canceled!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                });
             }
-          });
+        });
 
 
 
     }
 
 
-    const handleConfirm = async (joinId)=>{
-       await axios.put('/api/join/update-confirm', {joinId});
+    const handleConfirm = async (joinId) => {
+        await axios.put('/api/join/update-confirm', { joinId });
 
-       refetch();
+        refetch();
     }
 
 
     return (
         <div className='px-2 lg:px-20 my-10'>
+
+            <Helmet>
+                <title>Aid Camp | Manage Registered Camps</title>
+            </Helmet>
 
             <div className='text-center font-bold'>Manage Registered Camps</div>
 
@@ -110,7 +115,7 @@ const manageRegisteredCamps = () => {
 
                                     <td>{element.payment_status === "unpaid" ? <p className='text-gray-600 font-bold'>Unpaid</p> : <p className='text-gray-600 font-bold'>Paid</p>}</td>
 
-                                    {element.confirmation_status === "pending" && <td><button onClick={()=>handleConfirm(element._id)} className='text-white bg-gray-500 px-2 py-1 rounded'>Pending</button></td>}
+                                    {element.confirmation_status === "pending" && <td><button onClick={() => handleConfirm(element._id)} className='text-white bg-gray-500 px-2 py-1 rounded'>Pending</button></td>}
                                     {element.confirmation_status === "confirmed" && <td className='text-green-600 font-bold'>Confirmed</td>}
 
                                     <td>{element.payment_status === "paid" && <button onClick={() => handleCancel(element._id)} className='px-3 py-1 rounded bg-red-600 text-white'>Cancel</button>}</td>
