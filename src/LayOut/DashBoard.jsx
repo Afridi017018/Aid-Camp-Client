@@ -14,7 +14,7 @@ const DashBoard = () => {
             <div className='md:w-full lg:w-64 bg-gray-600 lg:min-h-screen text-white font-bold'>
                 <div>
 
-                    <div className='mx-auto w-40 h-16 lg:w-full lg:px-10 lg:h-16 lg:mb-3'><img onClick={() => navigate('/')} src="/aid-camp-logo.png" alt="" /></div>
+                    <div className='mx-auto w-40 h-16 lg:w-full lg:px-10 lg:h-16 lg:mb-3 cursor-pointer'><img onClick={() => navigate('/')} src="/aid-camp-logo.png" alt="" /></div>
 
                     <ul className=' menu p-4 gap-5'>
                         <li>
@@ -99,7 +99,7 @@ const DashBoard = () => {
 
             </div>
 
-            <div className='flex-1'>
+            <div className='flex-1 bg-gradient-to-r from-blue-200 to-cyan-100'>
                 <Outlet />
             </div>
         </div>

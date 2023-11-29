@@ -75,8 +75,8 @@ if(isLoading)
 
   return (
     <div className="container mx-auto my-10 px-20">
-      <div className="max-w-full mx-auto p-4 border shadow-2xl">
-        <div className="bg-white p-4 rounded-lg">
+      <div className="max-w-full mx-auto  shadow-2xl">
+        <div className="bg-gradient-to-r from-blue-100 to-cyan-100 p-4 rounded-lg">
           <h1 className="text-3xl font-semibold mb-4">My Profile</h1>
           <form onSubmit={handleUpdate}>
             <div className="mb-4">

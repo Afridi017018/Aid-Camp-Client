@@ -31,7 +31,7 @@ const CampCards = () => {
         <div>
             <h2 className="text-3xl font-bold mt-12 mb-3 text-center">Popular Camps</h2>
             <div className='text-center'>
-                <button onClick={()=>setSort(true)} className=' border border-gray-400 hover:bg-gray-500 hover:text-white text-sm px-2 py-1 rounded'>Sort By Participants</button>
+                <button onClick={()=>setSort(true)} className=' border border-blue-600 text-blue-600 hover:bg-blue-500 hover:text-white text-sm px-2 py-1 rounded'>Sort By Participants</button>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-5 gap-5 px-10'>
                 {

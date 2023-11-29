@@ -8,9 +8,9 @@ const CampCard= ({element}) => {
 
   return (
     <div className="mx-auto w-full">
-      <div className=" border">
+      <div className=" border rounded ">
 
-          <div className="bg-white p-4 rounded shadow">
+          <div className="bg-gradient-to-r from-white to-blue-100 p-4 rounded shadow">
             <img
               src={element.image}
               className="w-full h-48 object-cover mb-4 rounded"

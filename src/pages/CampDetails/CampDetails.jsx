@@ -111,7 +111,7 @@ const CampDetails = () => {
 
 
     return (
-        <div className='pt-32 pb-10 px-10'>
+        <div className='pt-32 pb-10 px-10 bg-gradient-to-r from-cyan-50 to-blue-100'>
 
             <Helmet>
                 <title>Aid Camp | Details</title>

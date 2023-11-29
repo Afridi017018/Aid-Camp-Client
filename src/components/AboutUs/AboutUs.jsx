@@ -2,7 +2,7 @@ import React from 'react';
 
 const AboutUs = () => {
     return (
-        <div className='px-5 bg-base-100 lg:h-[500px] my-10'>
+        <div className='px-5 bg-base-100 lg:h-[500px] bg-gradient-to-r from-cyan-200 to-blue-300'>
             <div className="flex flex-col lg:flex-row items-center">
 
                 <div data-aos="zoom-in-up" className='lg:w-1/2 text-center px-24'>

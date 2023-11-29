@@ -59,7 +59,7 @@ const NewCamp = ({ page_title, upcoming }) => {
     return (
         <div className="container mx-auto my-5">
             <div className="lg:w-full mx-auto p-4 lg:px-20">
-                <div className="bg-white py-5 rounded border shadow-2xl px-10">
+                <div className="bg-gradient-to-r from-blue-100 to-cyan-100 py-5 rounded border shadow-2xl px-10">
                     <h1 className="text-3xl font-semibold mb-5">{page_title}</h1>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4">
