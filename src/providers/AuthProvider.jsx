@@ -16,6 +16,7 @@ const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
     const axios = useAxios();
+
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [userInfo, setUserInfo] = useState(null)
@@ -52,7 +53,7 @@ const AuthProvider = ({ children }) => {
         // console.log(data.data.data.name)
         setLoading(true);
         updateProfile(auth.currentUser, {
-            displayName: data.data.data.name,
+            displayName: data?.data?.data?.name,
         })
         setLoading(false);
         setUserInfo(data.data.data);

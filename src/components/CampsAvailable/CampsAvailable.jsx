@@ -30,7 +30,7 @@ if(isLoading)
     return (
         <div>
             <div className='text-2xl pt-28 text-center font-bold text-gray-600'><h1>Available Camps</h1></div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-10 my-5'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-10 py-10'>
                 
                 {
                     data?.data?.data.map((element)=>(

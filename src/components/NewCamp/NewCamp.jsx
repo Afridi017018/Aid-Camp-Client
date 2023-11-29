@@ -3,11 +3,13 @@ import moment from 'moment'
 import useAuth from '../../hooks/useAuth';
 import useAxios from '../../hooks/useAxios';
 import { toast } from 'react-toastify';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 
 const NewCamp = ({ page_title, upcoming }) => {
 
     const { userInfo } = useAuth();
     const axios = useAxios();
+    const axiosPublic = useAxiosPublic();
 
 
 
@@ -25,7 +27,7 @@ const NewCamp = ({ page_title, upcoming }) => {
         const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
         const imageFile = { image: image }
-        const res = await axios.post(image_hosting_api, imageFile, {
+        const res = await axiosPublic.post(image_hosting_api, imageFile, {
             headers: {
                 'content-type': 'multipart/form-data'
             }

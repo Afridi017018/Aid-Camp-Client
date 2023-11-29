@@ -19,6 +19,10 @@ const ManageUpcoming = () => {
 
     const [open, setOpen] = useState(false);
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 7;
+
+
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
 
@@ -38,6 +42,13 @@ const ManageUpcoming = () => {
     }
 
 
+    const indexOfLastUser = currentPage * itemsPerPage;
+    const indexOfFirstUser = indexOfLastUser - itemsPerPage;
+    const currentUsers = data.data.data.slice(indexOfFirstUser, indexOfLastUser);
+
+    const handlePageChange = (direction) => {
+        setCurrentPage((direction === 'prev' ? currentPage - 1 : currentPage + 1));
+    };
 
 
 
@@ -343,6 +354,19 @@ const ManageUpcoming = () => {
                 </Modal>
             </div>
 
+
+
+
+{/* Pagination buttons */}
+<div className='text-center my-3'>
+                <button className={`cursor-pointer ${currentPage === 1 && "text-gray-500"}`} onClick={() => handlePageChange('prev')} disabled={currentPage === 1}>
+                    Prev
+                </button>
+                <span className='mx-3 border border-gray-500 px-1'>{currentPage}</span>
+                <button className={`cursor-pointer ${indexOfLastUser >= data.data.data.length && "text-gray-500"}`} onClick={() => handlePageChange('next')} disabled={indexOfLastUser >= data.data.data.length}>
+                    Next
+                </button>
+            </div>
 
 
 

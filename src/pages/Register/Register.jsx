@@ -6,6 +6,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 import useAxios from '../../hooks/useAxios';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -15,6 +16,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const Register = () => {
 
     const axios = useAxios();
+    const axiosPublic = useAxiosPublic();
 
     const { createUser, updateUser, setLoading } = useContext(AuthContext)
     const [passwordMessage, setPasswordMessage] = useState("");
@@ -43,7 +45,7 @@ const Register = () => {
                 const now = await createUser(email, password)
 
                 const imageFile = { image: image }
-                const res = await axios.post(image_hosting_api, imageFile, {
+                const res = await axiosPublic.post(image_hosting_api, imageFile, {
                     headers: {
                         'content-type': 'multipart/form-data'
                     }
@@ -52,7 +54,7 @@ const Register = () => {
                 const photo = res.data.data.display_url;
                 await updateUser(name, photo);
 
-                await axios.post('/api/user/user-info', { name, email, role: role.toLowerCase() })
+                await axios.post('/api/user/user-info', { name, email, photo, role: role.toLowerCase() })
 
                 toast.success("Registered Successfully !");
 

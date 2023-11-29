@@ -171,7 +171,7 @@ const CampDetails = () => {
                 </div>
             </div>
 
-            <div className='text-gray-600 text-lg'>
+            <div className='text-gray-800 text-lg'>
                 <p>{data.data.data.description}</p>
             </div>
 

@@ -14,6 +14,8 @@ const ManageCamps = () => {
     const { user } = useAuth();
     const axios = useAxios();
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 7;
 
     const [updateElement, setUpdateElement] = useState(null)
 
@@ -37,6 +39,15 @@ const ManageCamps = () => {
     if (isLoading) {
         return <Loading />
     }
+
+
+    const indexOfLastUser = currentPage * itemsPerPage;
+    const indexOfFirstUser = indexOfLastUser - itemsPerPage;
+    const currentUsers = data.data.data.slice(indexOfFirstUser, indexOfLastUser);
+
+    const handlePageChange = (direction) => {
+        setCurrentPage((direction === 'prev' ? currentPage - 1 : currentPage + 1));
+    };
 
     const handleSubmit = async (e) => {
 
@@ -151,7 +162,7 @@ const ManageCamps = () => {
                         {
                             data.data.data.length > 0 &&
 
-                            data.data.data.map((element) => (
+                            currentUsers.map((element) => (
                                 <tr key={element._id}>
                                     <td>
                                         <div className="flex items-center gap-3">
@@ -300,7 +311,16 @@ const ManageCamps = () => {
             </div>
 
 
-
+            {/* Pagination buttons */}
+            <div className='text-center my-3'>
+                <button className={`cursor-pointer ${currentPage === 1 && "text-gray-500"}`} onClick={() => handlePageChange('prev')} disabled={currentPage === 1}>
+                    Prev
+                </button>
+                <span className='mx-3 border border-gray-500 px-1'>{currentPage}</span>
+                <button className={`cursor-pointer ${indexOfLastUser >= data.data.data.length && "text-gray-500"}`} onClick={() => handlePageChange('next')} disabled={indexOfLastUser >= data.data.data.length}>
+                    Next
+                </button>
+            </div>
 
 
 
@@ -309,3 +329,85 @@ const ManageCamps = () => {
 };
 
 export default ManageCamps;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState, useEffect } from 'react';
+
+// const App = () => {
+//   const [users, setUsers] = useState([]);
+//   const [currentPage, setCurrentPage] = useState(1);
+//   const itemsPerPage = 5; // Number of items to display per page
+
+//   useEffect(() => {
+//     // Fetch data from backend when the component mounts
+//     fetch('http://localhost:3001/api/users')
+//       .then((response) => response.json())
+//       .then((data) => setUsers(data))
+//       .catch((error) => console.error('Error fetching data:', error));
+//   }, []);
+
+//   // Calculate indexes for pagination
+//   const indexOfLastUser = currentPage * itemsPerPage;
+//   const indexOfFirstUser = indexOfLastUser - itemsPerPage;
+//   const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
+
+//   // Change page
+//   const handlePageChange = (direction) => {
+//     setCurrentPage((prevPage) => (direction === 'prev' ? prevPage - 1 : prevPage + 1));
+//   };
+
+//   return (
+//     <div>
+//       <h1>User Table</h1>
+//       <table>
+//         <thead>
+//           <tr>
+//             <th>Name</th>
+//             <th>Phone</th>
+//             <th>Address</th>
+//             <th>Age</th>
+//           </tr>
+//         </thead>
+//         <tbody>
+//           {currentUsers.map((user) => (
+//             <tr key={user._id}>
+//               <td>{user.name}</td>
+//               <td>{user.phone}</td>
+//               <td>{user.address}</td>
+//               <td>{user.age}</td>
+//             </tr>
+//           ))}
+//         </tbody>
+//       </table>
+
+//       {/* Pagination buttons */}
+//       <div>
+//         <button onClick={() => handlePageChange('prev')} disabled={currentPage === 1}>
+//           Prev
+//         </button>
+//         <span> Page {currentPage} </span>
+//         <button onClick={() => handlePageChange('next')} disabled={indexOfLastUser >= users.length}>
+//           Next
+//         </button>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default App;

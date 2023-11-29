@@ -1,6 +1,6 @@
 import { async } from '@firebase/util';
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom/dist';
 import { toast } from 'react-toastify';
@@ -13,6 +13,10 @@ const manageRegisteredCamps = () => {
 
     const axios = useAxios();
     const { user } = useAuth();
+
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 7;
 
     const navigate = useNavigate();
 
@@ -31,6 +35,15 @@ const manageRegisteredCamps = () => {
     if (isLoading || !user) {
         return <Loading />
     }
+
+
+    const indexOfLastUser = currentPage * itemsPerPage;
+    const indexOfFirstUser = indexOfLastUser - itemsPerPage;
+    const currentUsers = data.data.data.slice(indexOfFirstUser, indexOfLastUser);
+
+    const handlePageChange = (direction) => {
+        setCurrentPage((direction === 'prev' ? currentPage - 1 : currentPage + 1));
+    };
 
     // console.log(data.data.data)
 
@@ -129,6 +142,20 @@ const manageRegisteredCamps = () => {
 
                 </table>
             </div>
+
+
+{/* Pagination buttons */}
+<div className='text-center my-3'>
+                <button className={`cursor-pointer ${currentPage === 1 && "text-gray-500"}`} onClick={() => handlePageChange('prev')} disabled={currentPage === 1}>
+                    Prev
+                </button>
+                <span className='mx-3 border border-gray-500 px-1'>{currentPage}</span>
+                <button className={`cursor-pointer ${indexOfLastUser >= data.data.data.length && "text-gray-500"}`} onClick={() => handlePageChange('next')} disabled={indexOfLastUser >= data.data.data.length}>
+                    Next
+                </button>
+            </div>
+
+
         </div>
     );
 };

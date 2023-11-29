@@ -13,7 +13,7 @@ const CampCard= ({element}) => {
           <div className="bg-gradient-to-r from-white to-blue-100 p-4 rounded shadow">
             <img
               src={element.image}
-              className="w-full h-48 object-cover mb-4 rounded"
+              className="w-full h-48 mb-4 rounded"
             />
             <h3 className="text-lg font-bold mb-2">{element.name}</h3>
             <p className="text-gray-600">{element.date} | {element.time}</p>
