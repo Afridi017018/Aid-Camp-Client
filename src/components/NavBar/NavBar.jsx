@@ -141,7 +141,7 @@ const {user, logOut} = useAuth();
                     </div>
                     <div onClick={() => navigate("/")} className="text-xl font-bold flex cursor-pointer">
                         <div>
-                            <img className='h-14 w-44' src="" alt="" />
+                            <img className='h-24 w-40' src="/aid-camp-logo.png" alt="" />
                         </div>
                     </div>
                 </div>

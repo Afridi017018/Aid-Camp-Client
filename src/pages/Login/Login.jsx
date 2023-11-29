@@ -29,7 +29,7 @@ const Login = () => {
 
             if (login.user) {
                 // axios.post(`/user-info`, { user: login.user.email, name: login.user.displayName, photo: login.user.photoURL })
-                navigate(location?.state ? location.state : "/")
+                navigate(location?.state ? location.state : "/dashboard/user-profile")
             }
 
         } catch (error) {
@@ -40,28 +40,28 @@ const Login = () => {
 
     }
 
-    const handleGoogleLogin = async (e) => {
-        e.preventDefault();
+    // const handleGoogleLogin = async (e) => {
+    //     e.preventDefault();
 
 
-        try {
-            const login = await signInGoogle();
-            toast.dismiss();
-            toast.success("Login Successful !");
+    //     try {
+    //         const login = await signInGoogle();
+    //         toast.dismiss();
+    //         toast.success("Login Successful !");
 
-            if (login.user) {
-                // axios.post(`/user-info`, { user: login.user.email, name: login.user.displayName, photo: login.user.photoURL })
-                navigate(location?.state ? location.state : "/")
-            }
+    //         if (login.user) {
+    //             // axios.post(`/user-info`, { user: login.user.email, name: login.user.displayName, photo: login.user.photoURL })
+    //             navigate(location?.state ? location.state : "/")
+    //         }
 
-        } catch (error) {
-            toast.error(error.message);
+    //     } catch (error) {
+    //         toast.error(error.message);
 
-        }
+    //     }
 
 
 
-    }
+    // }
 
 
 
