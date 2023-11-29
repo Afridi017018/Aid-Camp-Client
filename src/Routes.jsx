@@ -9,6 +9,7 @@ import AllUpcomingCamps from "./pages/AllUpcomingCamps/AllUpcomingCamps";
 import AvailableCamps from "./pages/AvailableCamps/AvailableCamps";
 import CampDetails from "./pages/CampDetails/CampDetails";
 import ContactUs from "./pages/ContactUs/ContactUs";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import FeedBack from "./pages/FeedBack/FeedBack";
 import Home from "./pages/Home/Home";
 import InterestedParticipants from "./pages/InterestedParticipants/InterestedParticipants";
@@ -34,7 +35,7 @@ export const router = createBrowserRouter([
     {
         path: "/",
         element: <App />,
-        // errorElement: <ErrorPage />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: "/",
@@ -69,7 +70,7 @@ export const router = createBrowserRouter([
     {
         path: "dashboard",
         element: <PrivateRoute><DashBoard /></PrivateRoute>,
-        // errorElement: <ErrorPage />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: "home",
