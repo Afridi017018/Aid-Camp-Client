@@ -61,6 +61,7 @@ const FeedBack = () => {
         const obj = {
             participant: userInfo.name,
             campId: currentElement.campId._id,
+            photo: userInfo.photo,
             email: userInfo.email,
             rating: Number(e.target.rating.value),
             feedback: e.target.feedback.value

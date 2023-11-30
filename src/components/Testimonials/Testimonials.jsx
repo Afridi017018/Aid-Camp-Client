@@ -31,11 +31,12 @@ const Testimonials = () => {
           <div>
             <h2 className="text-3xl font-bold mt-12 mb-3 text-center">Testimonials</h2>
           </div>
-          <div className="carousel w-full h-80 border shadow-2xl">
+          <div className="carousel w-full h-96 border shadow-2xl">
             {
-              data?.data?.data[1] &&
+              data?.data?.data[0] &&
               <div id="slide1" className="carousel-item relative w-full">
                 <div className="w-full flex flex-col justify-center items-center">
+                  <img className='w-16 h-16 mb-3 rounded-full' src={data?.data.data[0].photo} alt="" />
                   <p className='font-bold text-2xl'>{data?.data.data[0].participant}</p>
                   <p className='text-xs font-bold text-gray-600'>{data?.data?.data[0]?.campId.name}</p>
 
@@ -60,6 +61,7 @@ const Testimonials = () => {
               data?.data?.data[1] &&
               <div id="slide2" className="carousel-item relative w-full">
                 <div className="w-full flex flex-col justify-center items-center">
+                  <img className='w-16 h-16 mb-3 rounded-full' src={data?.data.data[1].photo} alt="" />
                   <p className='font-bold text-2xl'>{data?.data.data[1].participant}</p>
                   <p className='text-xs font-bold text-gray-600'>{data?.data.data[1].campId.name}</p>
 
@@ -85,9 +87,10 @@ const Testimonials = () => {
               data?.data?.data[2] &&
               <div id="slide3" className="carousel-item relative w-full">
                 <div className="w-full flex flex-col justify-center items-center">
+                  <img className='w-16 h-16 mb-3 rounded-full' src={data?.data.data[2].photo} alt="" />
                   <div className="w-full flex flex-col justify-center items-center">
                     <p className='font-bold text-2xl'>{data?.data.data[2].participant}</p>
-                    <p className='text-xs font-bold text-gray-600'>{data?.data?.data[1].campId.name}</p>
+                    <p className='text-xs font-bold text-gray-600'>{data?.data?.data[2].campId.name}</p>
 
                     {data?.data.data[2].rating === 1 && <p className='text-2xl font-bold text-orange-500'>★</p>}
                     {data?.data.data[2].rating === 2 && <p className='text-2xl font-bold text-orange-500'>★ ★</p>}

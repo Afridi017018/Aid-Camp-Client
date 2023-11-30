@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import useAuth from '../../hooks/useAuth';
 import useAxios from '../../hooks/useAxios';
@@ -9,6 +9,9 @@ const PaymentHistory = () => {
 
     const axios = useAxios();
     const { user } = useAuth();
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 7;
 
 
     const getRegCamp = async () => {
@@ -27,6 +30,13 @@ const PaymentHistory = () => {
         return <Loading />
     }
 
+    const indexOfLastUser = currentPage * itemsPerPage;
+    const indexOfFirstUser = indexOfLastUser - itemsPerPage;
+    const currentUsers = data.data.data.slice(indexOfFirstUser, indexOfLastUser);
+
+    const handlePageChange = (direction) => {
+        setCurrentPage((direction === 'prev' ? currentPage - 1 : currentPage + 1));
+    };
 
 
     return (
@@ -88,6 +98,19 @@ const PaymentHistory = () => {
 
                 </table>
             </div>
+
+            {/* Pagination buttons */}
+            <div className='text-center my-3'>
+                <button className={`cursor-pointer ${currentPage === 1 && "text-gray-500"}`} onClick={() => handlePageChange('prev')} disabled={currentPage === 1}>
+                    Prev
+                </button>
+                <span className='mx-3 border border-gray-500 px-1'>{currentPage}</span>
+                <button className={`cursor-pointer ${indexOfLastUser >= data.data.data.length && "text-gray-500"}`} onClick={() => handlePageChange('next')} disabled={indexOfLastUser >= data.data.data.length}>
+                    Next
+                </button>
+            </div>
+
+
         </div>
     );
 };

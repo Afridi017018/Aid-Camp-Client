@@ -7,7 +7,7 @@ const UpcomingCamp = ({ element }) => {
 
     return (
         <div>
-            <div className="card card-side bg-base-100 h-72 border rounded-none shadow bg-gradient-to-r from-white to-blue-100">
+            <div className="card card-side bg-base-100 h-full border rounded-none shadow bg-gradient-to-r from-white to-blue-100">
                 <img className='w-40 md:w-52 lg:w-80 h-full' src={element.image} />
                 <div className="card-body">
                     <h2 className="card-title">{element.name}</h2>
