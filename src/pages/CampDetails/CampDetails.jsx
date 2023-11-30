@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet-async';
 
 import { Modal } from 'react-responsive-modal';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom/dist';
 import { toast } from 'react-toastify';
 import useAuth from '../../hooks/useAuth';
 import useAxios from '../../hooks/useAxios';
@@ -15,6 +16,8 @@ const CampDetails = () => {
     const { userInfo, user } = useAuth();
     const { campId } = useParams();
     const axios = useAxios();
+
+    const navigate = useNavigate();
 
     const [open, setOpen] = useState(false);
 
@@ -155,7 +158,7 @@ const CampDetails = () => {
             {
                 userInfo === null &&
                 <div className='text-center my-2'>
-                    <button className='bg-blue-600 text-white px-3 py-1 text-lg rounded'>Join Camp</button>
+                    <button onClick={() => navigate('/login')} className='bg-blue-600 text-white px-3 py-1 text-lg rounded'>Join Camp</button>
                 </div>
             }
             <div className='my-5'>
