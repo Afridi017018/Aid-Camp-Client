@@ -1,8 +1,20 @@
-# React + Vite
+# Aid Camp
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## [ Live Site Link]()
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Secure Access:**
+  - Role-based authentication ensures personalized dashboards for participants, professionals, and organizers.
+
+- **Simple Registration:**
+  - Participants effortlessly register for health camps, streamlining event enrollment.
+
+- **Convenient Payments:**
+  - Integrated payment system allows online transactions, with a transparent payment history feature.
+
+- **Professional Interaction:**
+  - Professionals express interest, monitor request status, fostering collaboration.
+
+- **Organizer Control:**
+  - Organizers can create camps, manage camps, oversee requests, and approve/cancel efficiently for a responsive system.
