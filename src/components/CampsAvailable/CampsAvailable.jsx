@@ -28,7 +28,7 @@ const CampsAvailable = () => {
         return <Loading />
     }
 
-    console.log(data.data.data)
+
 
     const handlePageChange = (page) => {
         setCurrentPage(page);
