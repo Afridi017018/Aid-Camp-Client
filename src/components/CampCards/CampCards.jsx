@@ -35,7 +35,7 @@ const CampCards = () => {
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-5 gap-5 px-10'>
                 {
-                    data?.data?.data.map((element) => (
+                    data?.data?.data?.map((element) => (
                         <CampCard key={element._id} element={element} />
                     ))
                 }
