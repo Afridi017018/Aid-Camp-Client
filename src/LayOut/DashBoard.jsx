@@ -2,6 +2,16 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Outlet, useNavigate } from 'react-router-dom/dist';
 import useAuth from '../hooks/useAuth';
+import { FaHome } from "react-icons/fa";
+import { CgProfile } from "react-icons/cg";
+import { FaRegRegistered } from "react-icons/fa";
+import { MdHistory } from "react-icons/md";
+import { MdOutlineFeedback } from "react-icons/md";
+import { CiMedicalCross } from "react-icons/ci";
+import { MdOutlineUpcoming } from "react-icons/md";
+import { IoMdAddCircle } from "react-icons/io";
+import { MdOutlineManageHistory } from "react-icons/md";
+import { IoCheckmarkDoneCircle } from "react-icons/io5";
 
 const DashBoard = () => {
 
@@ -18,11 +28,11 @@ const DashBoard = () => {
 
                     <ul className=' menu p-4 gap-5'>
                         <li>
-                            <NavLink to='/'>Home</NavLink>
+                            <NavLink to='/'><FaHome /> Home</NavLink>
                         </li>
 
                         <li>
-                            <NavLink to='/dashboard/user-profile'>Profile</NavLink>
+                            <NavLink to='/dashboard/user-profile'><CgProfile /> Profile</NavLink>
                         </li>
 
                         {
@@ -30,13 +40,13 @@ const DashBoard = () => {
                             <>
 
                                 <li>
-                                    <NavLink to='/dashboard/registered-camps'>Registered Camps</NavLink>
+                                    <NavLink to='/dashboard/registered-camps'><FaRegRegistered />Registered Camps</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to='/dashboard/payment-history'>Payment History</NavLink>
+                                    <NavLink to='/dashboard/payment-history'><MdHistory /> Payment History</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to='/dashboard/feedback'>Feedback</NavLink>
+                                    <NavLink to='/dashboard/feedback'><MdOutlineFeedback /> Feedback</NavLink>
                                 </li>
                             </>
                         }
@@ -47,19 +57,19 @@ const DashBoard = () => {
                             <>
 
                                 <li>
-                                    <NavLink to='/dashboard/add-camp'>Add Camp</NavLink>
+                                    <NavLink to='/dashboard/add-camp'><IoMdAddCircle /> Add Camp</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to='/dashboard/manage-camps'>Manage Camps</NavLink>
+                                    <NavLink to='/dashboard/manage-camps'><MdOutlineManageHistory /> Manage Camps</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to='/dashboard/manage-registered-camps'>Registered Camps</NavLink>
+                                    <NavLink to='/dashboard/manage-registered-camps'><FaRegRegistered /> Registered Camps</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to='/dashboard/add-upcoming-camp'>Add Upcoming</NavLink>
+                                    <NavLink to='/dashboard/add-upcoming-camp'><MdOutlineUpcoming /> Add Upcoming</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to='/dashboard/manage-upcoming-camps'>Manage Upcoming</NavLink>
+                                    <NavLink to='/dashboard/manage-upcoming-camps'><MdOutlineManageHistory /> Manage Upcoming</NavLink>
                                 </li>
                             </>
                         }
@@ -71,16 +81,16 @@ const DashBoard = () => {
                             <>
 
                                 <li>
-                                    <NavLink to='/dashboard/accepted-camps'>Accepted Camps</NavLink>
+                                    <NavLink to='/dashboard/accepted-camps'><IoCheckmarkDoneCircle /> Accepted Camps</NavLink>
                                 </li>
                             </>
                         }
 
                         <li>
-                            <NavLink to='/dashboard/all-popular-camps'>Popular Camps</NavLink>
+                            <NavLink to='/dashboard/all-popular-camps'><CiMedicalCross /> Popular Camps</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/dashboard/all-upcoming-camps'>Upcoming Camps</NavLink>
+                            <NavLink to='/dashboard/all-upcoming-camps'><MdOutlineUpcoming /> Upcoming Camps</NavLink>
                         </li>
 
 
